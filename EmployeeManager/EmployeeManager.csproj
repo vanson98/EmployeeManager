@@ -13,6 +13,7 @@
     <None Remove="Images\bell-icon.png" />
     <None Remove="Images\chart-icon.png" />
     <None Remove="Images\ChevronDown.png" />
+    <None Remove="Images\more-horizontal.png" />
     <None Remove="Images\music-icon.png" />
     <None Remove="Images\person-icon.png" />
     <None Remove="Images\plus-icon.png" />
@@ -36,6 +37,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\ChevronDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\more-horizontal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\music-icon.png">
