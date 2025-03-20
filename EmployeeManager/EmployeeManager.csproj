@@ -15,10 +15,12 @@
     <None Remove="Images\ChevronDown.png" />
     <None Remove="Images\more-horizontal.png" />
     <None Remove="Images\music-icon.png" />
+    <None Remove="Images\PencilAlt.png" />
     <None Remove="Images\person-icon.png" />
     <None Remove="Images\plus-icon.png" />
     <None Remove="Images\Search.png" />
     <None Remove="Images\team.png" />
+    <None Remove="Images\Trash.png" />
     <None Remove="Images\upload.png" />
     <None Remove="Images\window-bg-image.png" />
   </ItemGroup>
@@ -46,6 +48,9 @@
     <Resource Include="Images\music-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\PencilAlt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\person-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -56,6 +61,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\team.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Trash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\upload.png">

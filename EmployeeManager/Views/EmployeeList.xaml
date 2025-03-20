@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:component="clr-namespace:EmployeeManager.Components"
+    xmlns:custom="clr-namespace:EmployeeManager.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,6 +12,7 @@
     d:DesignWidth="1872"
     mc:Ignorable="d">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <Style x:Key="lightButton" TargetType="Button">
             <Setter Property="Background" Value="#527c9d" />
             <Setter Property="Height" Value="48" />
@@ -67,18 +69,27 @@
             </Setter>
         </Style>
         <Style x:Key="searchBox" TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="#527c9d" />
             <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Padding" Value="10,0,50,2" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border
-                            Background="#527c9d"
-                            BorderThickness="0"
-                            CornerRadius="8"
-                            Opacity="0.3">
-                            <ContentPresenter />
-                        </Border>
+                        <Grid>
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="0"
+                                CornerRadius="8"
+                                Opacity="0.3" />
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -382,6 +393,46 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="GridMenuActionButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="106" />
+            <Setter Property="Height" Value="52" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="10 10 10 10">
+                            <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#768b9d"
+                                    Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="Transparent"
+                                    Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Border
@@ -392,7 +443,7 @@
                 <SolidColorBrush Opacity="0.3" Color="#527c9b" />
             </Border.Background>
             <Border.Effect>
-                <BlurEffect KernelType="Gaussian" Radius="1" />
+                <BlurEffect KernelType="Box" Radius="3" />
             </Border.Effect>
         </Border>
         <Grid Margin="24">
@@ -419,12 +470,12 @@
                             Margin="16,0"
                             VerticalAlignment="Center"
                             FontSize="18"
-                            FontWeight="Medium"
+                            FontWeight="Normal"
                             Foreground="#fff"
                             IsHitTestVisible="False"
                             Opacity="0.5"
                             Text="Tìm kiếm"
-                            Visibility="{Binding ElementName=searchBoxCtrl, Path=Text.IsEmpty}"/>
+                            Visibility="{Binding ElementName=searchBoxCtrl, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
                         <TextBox x:Name="searchBoxCtrl" Style="{StaticResource searchBox}" />
                         <Image
                             Width="24"
@@ -558,19 +609,48 @@
                             <DataGridTemplateColumn Width="55" Header="Action">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image
-                                            Width="24"
-                                            Height="24"
-                                            HorizontalAlignment="Left"
-                                            Source="/Images/more-horizontal.png" />
+                                        <custom:DropdownMenu>
+                                            <Grid>
+                                                <Border
+                                                    Width="106"
+                                                    Height="102"
+                                                    Background="#527c9d"
+                                                    CornerRadius="10"
+                                                    Opacity="1" />
+                                                <StackPanel>
+                                                    <Button Style="{StaticResource GridMenuActionButton}">
+                                                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                                            <Image
+                                                                Width="20"
+                                                                Height="20"
+                                                                Source="/Images/PencilAlt.png" />
+                                                            <TextBlock
+                                                                Margin="3,0"
+                                                                FontSize="16"
+                                                                Text="Sửa" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                    <Button Style="{StaticResource GridMenuActionButton}">
+                                                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                                            <Image
+                                                                Width="20"
+                                                                Height="20"
+                                                                Source="/Images/Trash.png" />
+                                                            <TextBlock
+                                                                Margin="3,0"
+                                                                FontSize="16"
+                                                                Text="Xóa" />
+                                                        </StackPanel>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </custom:DropdownMenu>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-
                 </Grid>
-
             </Grid>
             <!--  Grid Footer  -->
             <Border Grid.Row="2" Margin="24">

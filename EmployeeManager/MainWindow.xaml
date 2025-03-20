@@ -30,10 +30,22 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border>
-        <Border.Background>
-            <ImageBrush ImageSource="/Images/window-bg-image.png" Opacity="1" />
-        </Border.Background>
+    <Grid>
+        <Border>
+            <Border.Background>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Image Source="/Images/window-bg-image.png">
+                            <Image.BitmapEffect>
+                                <BlurBitmapEffect Radius="5" />
+                            </Image.BitmapEffect>
+                        </Image>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.Background>
+
+
+        </Border>
         <Grid Margin="24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
@@ -65,7 +77,6 @@
                             </Button>
                         </StackPanel>
                     </Border>
-
                     <Border Width="64" Height="64" CornerRadius="50">
                         <Border.Background>
                             <SolidColorBrush Color="#527c9d" Opacity="0.3" />
@@ -78,6 +89,7 @@
                 <views:EmployeeList Grid.Row="1"/>
             </Grid>
         </Grid>
-    </Border>
+    </Grid>
+    
 
 </Window>
