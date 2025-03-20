@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <Style x:Key="lightButton" TargetType="Button">
             <Setter Property="Background" Value="#527c9d" />
-            <Setter Property="Height" Value="61" />
+            <Setter Property="Height" Value="48" />
             <Setter Property="Width" Value="123" />
             <Setter Property="Margin" Value="5,0" />
             <Setter Property="Foreground" Value="#fff" />
@@ -42,7 +42,7 @@
         </Style>
         <Style x:Key="solidButton" TargetType="Button">
             <Setter Property="Background" Value="#1a5d8d" />
-            <Setter Property="Height" Value="61" />
+            <Setter Property="Height" Value="48" />
             <Setter Property="Width" Value="210" />
             <Setter Property="Margin" Value="5,0" />
             <Setter Property="Foreground" Value="#fff" />
@@ -50,10 +50,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5">
-                            <Border.Background>
-                                <SolidColorBrush Opacity="0.3" Color="#527c9d" />
-                            </Border.Background>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+
                             <StackPanel Orientation="Horizontal">
                                 <Image
                                     Width="24"
@@ -68,7 +66,23 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style x:Key="searchBox" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                            Background="#527c9d"
+                            BorderThickness="0"
+                            CornerRadius="8"
+                            Opacity="0.3">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--  Row Style  -->
         <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
             <Setter Property="Background" Value="Transparent" />
@@ -369,15 +383,18 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-
-    <Border
-        BorderBrush="#527c9d"
-        BorderThickness="1"
-        CornerRadius="24">
-        <Border.Background>
-            <SolidColorBrush Opacity="0.3" Color="#527c9b" />
-        </Border.Background>
-
+    <Grid>
+        <Border
+            BorderBrush="#527c9d"
+            BorderThickness="1"
+            CornerRadius="24">
+            <Border.Background>
+                <SolidColorBrush Opacity="0.3" Color="#527c9b" />
+            </Border.Background>
+            <Border.Effect>
+                <BlurEffect KernelType="Gaussian" Radius="1" />
+            </Border.Effect>
+        </Border>
         <Grid Margin="24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -391,8 +408,33 @@
                 </Grid.RowDefinitions>
                 <!--  Grid Data Function Panel  -->
                 <DockPanel LastChildFill="True">
+                    <!--  ComboBoxs  -->
                     <component:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ" />
-                    <TextBox Width="250" Height="50" />
+                    <!--  Search Box  -->
+                    <Grid
+                        Width="374"
+                        Height="48"
+                        Margin="24,0,0,0">
+                        <TextBlock
+                            Margin="16,0"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Medium"
+                            Foreground="#fff"
+                            IsHitTestVisible="False"
+                            Opacity="0.5"
+                            Text="Tìm kiếm"
+                            Visibility="{Binding ElementName=searchBoxCtrl, Path=Text.IsEmpty}"/>
+                        <TextBox x:Name="searchBoxCtrl" Style="{StaticResource searchBox}" />
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,16,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Source="/Images/Search.png" />
+                    </Grid>
+                    <!--  Buttons  -->
                     <StackPanel
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
@@ -484,17 +526,13 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn
-                                Width="200"
-                                Header="Chức vụ">
+                            <DataGridTemplateColumn Width="200" Header="Chức vụ">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock
                                             Margin="0,0,80,0"
                                             VerticalAlignment="Center"
-                                            
-                                Text="{Binding Employee.Role}"
-                                           />
+                                            Text="{Binding Employee.Role}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -509,10 +547,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button
+                                            Margin="0,0,40,0"
+                                            VerticalAlignment="Center"
                                             Command="{Binding ToggleEmployeeStatusCommand}"
                                             Content="{Binding Status}"
-                                            Margin="0 0 40 0"
-                                            VerticalAlignment="Center"
                                             Style="{StaticResource StatusButtonTemplate}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -546,5 +584,6 @@
                     Text="Showing 1-9 of 78" />
             </Border>
         </Grid>
-    </Border>
+    </Grid>
+
 </UserControl>
