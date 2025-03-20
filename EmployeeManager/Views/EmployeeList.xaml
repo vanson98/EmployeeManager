@@ -74,6 +74,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+            <Setter Property="Height" Value="80" />
             <Setter Property="ValidationErrorTemplate">
                 <Setter.Value>
                     <ControlTemplate>
@@ -152,6 +153,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#e0e0e0" />
             <Setter Property="FontSize" Value="18" />
+            <Setter Property="Height" Value="62" />
             <Setter Property="BorderBrush" Value="#5d7c9d" />
             <Setter Property="BorderThickness" Value="0,0,0,1" />
             <Setter Property="Template">
@@ -170,7 +172,7 @@
                                 SeparatorVisibility="{TemplateBinding SeparatorVisibility}"
                                 SortDirection="{TemplateBinding SortDirection}">
                                 <ContentPresenter
-                                    Margin="0,0,0,16"
+                                    Margin="{TemplateBinding Margin}"
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     RecognizesAccessKey="True"
@@ -197,7 +199,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Margin" Value="0" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -355,7 +357,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border
-                            Width="154"
+                            Width="155"
                             Height="40"
                             HorizontalAlignment="Left"
                             Background="{TemplateBinding Background}"
@@ -363,7 +365,6 @@
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
-
                 </Setter.Value>
             </Setter>
         </Style>
@@ -376,130 +377,164 @@
         <Border.Background>
             <SolidColorBrush Opacity="0.3" Color="#527c9b" />
         </Border.Background>
+
         <Grid Margin="24">
             <Grid.RowDefinitions>
-                <RowDefinition Height="101" />
-                <RowDefinition />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
-            <!--  Grid Data Function Panel  -->
-            <DockPanel LastChildFill="True">
-                <component:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ" />
-                <TextBox Width="250" Height="50" />
-                <StackPanel
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <Button
-                        Margin="0,0,20,0"
+            <!--  Grid Body  -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="88" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!--  Grid Data Function Panel  -->
+                <DockPanel LastChildFill="True">
+                    <component:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ" />
+                    <TextBox Width="250" Height="50" />
+                    <StackPanel
                         HorizontalAlignment="Right"
-                        Content="Export"
-                        Style="{StaticResource lightButton}" />
-                    <Button
-                        HorizontalAlignment="Right"
-                        Content="Thêm nhân viên"
-                        Style="{StaticResource solidButton}" />
-                </StackPanel>
-            </DockPanel>
-            <!--  Data Grid  -->
-            <Grid Grid.Row="1" Margin="24,16">
-                <DataGrid
-                    x:Name="employeeDataGrid"
-                    AutoGenerateColumns="False"
-                    CellStyle="{DynamicResource DataGridCellStyle1}"
-                    ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                    ItemsSource="{Binding Employees}"
-                    RowStyle="{DynamicResource DataGridRowStyle1}"
-                    Style="{DynamicResource DataGridStyle1}">
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Width="170" CanUserResize="False">
-                            <DataGridTemplateColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox Margin="10,0" VerticalAlignment="Center" />
-                                        <TextBlock Text="ID" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.HeaderTemplate>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox
-                                            Width="16"
-                                            Height="16"
-                                            Margin="10,0"
-                                            VerticalAlignment="Center" />
-                                        <TextBlock Text="{Binding Id}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="*" Header="Họ tên">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border
-                                            Width="40"
-                                            Height="40"
-                                            CornerRadius="50">
-                                            <Image Source="/Images/avartar.png" />
-                                        </Border>
-                                        <TextBlock
-                                            Margin="10,0"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            Content="Export"
+                            Style="{StaticResource lightButton}" />
+                        <Button
+                            HorizontalAlignment="Right"
+                            Content="Thêm nhân viên"
+                            Style="{StaticResource solidButton}" />
+                    </StackPanel>
+                </DockPanel>
+                <!--  Data Grid  -->
+                <Grid Grid.Row="1">
+                    <DataGrid
+                        x:Name="employeeDataGrid"
+                        AutoGenerateColumns="False"
+                        CellStyle="{DynamicResource DataGridCellStyle1}"
+                        ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                        ItemsSource="{Binding Employees}"
+                        RowStyle="{DynamicResource DataGridRowStyle1}"
+                        Style="{DynamicResource DataGridStyle1}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="195" CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="24,16,80,16" Orientation="Horizontal">
+                                            <CheckBox Margin="10,0" VerticalAlignment="Center" />
+                                            <TextBlock Text="ID" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel
+                                            Margin="24,0,50,0"
                                             VerticalAlignment="Center"
-                                            Text="{Binding Employee.Name}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn
-                            Width="*"
-                            Binding="{Binding Employee.Email}"
-                            Header="Email" />
-                        <DataGridTemplateColumn Width="210" Header="Ngày sinh">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Employee.Dob, StringFormat=dd/MM/yyyy}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn
-                            Width="210"
-                            Binding="{Binding Employee.Role}"
-                            Header="Chức vụ" />
-                        <DataGridTemplateColumn Width="210" Header="Create date">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding CreatedDate, StringFormat=dd/MM/yyyy}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="220" Header="Status">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button
-                                        Command="{Binding ToggleEmployeeStatusCommand}"
-                                        Content="{Binding Status}"
-                                        Style="{StaticResource StatusButtonTemplate}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="100" Header="Action">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image
-                                        Width="24"
-                                        Height="24"
-                                        HorizontalAlignment="Left"
-                                        Source="/Images/more-horizontal.png" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                                            Orientation="Horizontal">
+                                            <CheckBox
+                                                Width="16"
+                                                Height="16"
+                                                Margin="10,0"
+                                                VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding Id}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="373" Header="Họ tên">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,80,0" Orientation="Horizontal">
+                                            <Border
+                                                Width="40"
+                                                Height="40"
+                                                CornerRadius="50">
+                                                <Image Source="/Images/avartar.png" />
+                                            </Border>
+                                            <TextBlock
+                                                Margin="10,0"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center"
+                                                Text="{Binding Employee.Name}"
+                                                TextWrapping="Wrap" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="380" Header="Email">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="0,0,80,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Employee.Email}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="200" Header="Ngày sinh">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="0,0,80,0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Employee.Dob, StringFormat=dd/MM/yyyy}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn
+                                Width="200"
+                                Header="Chức vụ">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock
+                                            Margin="0,0,80,0"
+                                            VerticalAlignment="Center"
+                                            
+                                Text="{Binding Employee.Role}"
+                                           />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="200" Header="Create date">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock VerticalAlignment="Center" Text="{Binding CreatedDate, StringFormat=dd/MM/yyyy}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="197" Header="Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Command="{Binding ToggleEmployeeStatusCommand}"
+                                            Content="{Binding Status}"
+                                            Margin="0 0 40 0"
+                                            VerticalAlignment="Center"
+                                            Style="{StaticResource StatusButtonTemplate}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="55" Header="Action">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image
+                                            Width="24"
+                                            Height="24"
+                                            HorizontalAlignment="Left"
+                                            Source="/Images/more-horizontal.png" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
 
             </Grid>
-            <!--  Grid Data Footer  -->
+            <!--  Grid Footer  -->
             <Border Grid.Row="2" Margin="24">
                 <TextBlock
                     HorizontalAlignment="Left"

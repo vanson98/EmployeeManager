@@ -21,8 +21,8 @@ namespace EmployeeManager.ViewModels
             new EmployeeViewModel( new EmployeeModel()
             {
                 Id = "G001",
-                Name = "Nguyen Van Son",
-                Email = "nguyenvanson98123@gmail.com",
+                Name = "Nguyen Van SonNguyen Van SonNguyen Van SonNguyen Van SonNguyen Van Son",
+                Email = "nguyenvanson98123@gmail.comNguyen Van SonNguyen Van SonNguyen Van SonNguyen Van Son",
                 CreatedDate = new DateTime(2018,9,15),
                 Dob = new DateTime(1998,9,15),
                 Role = "Manager",

@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmployeeManager"
         xmlns:views="clr-namespace:EmployeeManager.Views"
-        mc:Ignorable="d"
-        Width="1920" Height="1080" WindowStartupLocation="CenterScreen" >
+        mc:Ignorable="d" 
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True"
+        Background="Transparent"
+        Width="1920"
+        Height="1080">
     <Window.Resources>
         <Style x:Key="changeViewButton" TargetType="Button">
             <Setter Property="Width" Value="56"/>
@@ -29,50 +34,48 @@
         <Border.Background>
             <ImageBrush ImageSource="/Images/window-bg-image.png" Opacity="1" />
         </Border.Background>
-        <Grid>
-            <Grid Margin="24">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <!--Window Header-->
-                <DockPanel LastChildFill="True" Grid.Row="0">
-                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                        <Image Source="/Images/team.png" Stretch="Fill" Width="80" Height="80"/>
-                        <TextBlock Text="Danh sách nhân viên" FontSize="32" Foreground="White" Width="320" Height="39" VerticalAlignment="Center" Margin="-10 0 0 10"/>
-                    </StackPanel>
-                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" Width="376" Height="72">
-                        <Border Width="296px" Height="72" Margin="0 0 15 0" CornerRadius="36" VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <Border.Background>
-                                <SolidColorBrush Color="#527c9d" Opacity="0.3"/>
-                            </Border.Background>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Style="{StaticResource changeViewButton}">
-                                    <Image Source="/Images/chart-icon.png" Width="24" Height="24"/>
-                                </Button>
-                                <Button Style="{StaticResource changeViewButton}" BorderBrush="#fff" Background="#527c9b">
-                                    <Image Source="/Images/person-icon.png" Width="24" Height="24"/>
-                                </Button>
-                                <Button Style="{StaticResource changeViewButton}">
-                                    <Image Source="/Images/bell-icon.png" Width="24" Height="24"/>
-                                </Button>
-                                <Button Style="{StaticResource changeViewButton}">
-                                    <Image Source="/Images/music-icon.png" Width="24" Height="24"/>
-                                </Button>
-                            </StackPanel>
-                        </Border>
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Window Header-->
+            <DockPanel LastChildFill="True" Grid.Row="0">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Image Source="/Images/team.png" Stretch="Fill" Width="80" Height="80"/>
+                    <TextBlock Text="Danh sách nhân viên" FontSize="32" Foreground="White" Width="320" Height="39" VerticalAlignment="Center" Margin="-10 0 0 10"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" Width="376" Height="72">
+                    <Border Width="296px" Height="72" Margin="0 0 15 0" CornerRadius="36" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Border.Background>
+                            <SolidColorBrush Color="#527c9d" Opacity="0.3"/>
+                        </Border.Background>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Style="{StaticResource changeViewButton}">
+                                <Image Source="/Images/chart-icon.png" Width="24" Height="24"/>
+                            </Button>
+                            <Button Style="{StaticResource changeViewButton}" BorderBrush="#fff" Background="#527c9b">
+                                <Image Source="/Images/person-icon.png" Width="24" Height="24"/>
+                            </Button>
+                            <Button Style="{StaticResource changeViewButton}">
+                                <Image Source="/Images/bell-icon.png" Width="24" Height="24"/>
+                            </Button>
+                            <Button Style="{StaticResource changeViewButton}">
+                                <Image Source="/Images/music-icon.png" Width="24" Height="24"/>
+                            </Button>
+                        </StackPanel>
+                    </Border>
 
-                        <Border Width="64" Height="64" CornerRadius="50">
-                            <Border.Background>
-                                <SolidColorBrush Color="#527c9d" Opacity="0.3" />
-                            </Border.Background>
-                            <Image Source="/Images/avartar.png" Width="48"/>
-                        </Border>
-                    </StackPanel>
-                </DockPanel>
-                <Grid Grid.Row="1" Margin="0 16 0 0">
-                    <views:EmployeeList Grid.Row="1"/>
-                </Grid>
+                    <Border Width="64" Height="64" CornerRadius="50">
+                        <Border.Background>
+                            <SolidColorBrush Color="#527c9d" Opacity="0.3" />
+                        </Border.Background>
+                        <Image Source="/Images/avartar.png" Width="48"/>
+                    </Border>
+                </StackPanel>
+            </DockPanel>
+            <Grid Grid.Row="1" Margin="0 24 0 0">
+                <views:EmployeeList Grid.Row="1"/>
             </Grid>
         </Grid>
     </Border>
