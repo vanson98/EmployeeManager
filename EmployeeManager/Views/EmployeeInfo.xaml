@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager.Views"
+    xmlns:components="clr-namespace:EmployeeManager.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="937"
     d:DesignWidth="1872"
@@ -76,9 +77,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="formButton" TargetType="Button" BasedOn="{StaticResource infoButton}">
-            <Setter Property="Width" Value="240"/>
-            <Setter Property="Margin" Value="24 0 0 0"/>
+        <Style
+            x:Key="formButton"
+            BasedOn="{StaticResource infoButton}"
+            TargetType="Button">
+            <Setter Property="Width" Value="240" />
+            <Setter Property="Margin" Value="24,0,0,0" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -91,46 +95,46 @@
             <!--  Search Panel Header  -->
             <Grid Margin="0,0,0,24">
                 <TextBlock
-                    HorizontalAlignment="Left"
-                    FontSize="18"
-                    Foreground="#fff"
-                    Text="Tìm kiếm" />
+                HorizontalAlignment="Left"
+                FontSize="18"
+                Foreground="#fff"
+                Text="Tìm kiếm" />
                 <Image
-                    Width="24"
-                    Height="24"
-                    HorizontalAlignment="Right"
-                    Source="/Images/search2.png" />
+                Width="24"
+                Height="24"
+                HorizontalAlignment="Right"
+                Source="/Images/search2.png" />
             </Grid>
             <!--  Tab buttons  -->
             <UniformGrid
-                Height="41"
-                Margin="4"
-                Columns="3">
+            Height="41"
+            Margin="4"
+            Columns="3">
                 <Button
-                    Grid.Column="0"
-                    Margin="0,0,2,0"
-                    Content="All"
-                    Style="{StaticResource tabButton}" />
+                Grid.Column="0"
+                Margin="0,0,2,0"
+                Content="All"
+                Style="{StaticResource tabButton}" />
                 <Button
-                    Grid.Column="1"
-                    Margin="0,0,2,0"
-                    Content="Team"
-                    Style="{StaticResource tabButton}" />
+                Grid.Column="1"
+                Margin="0,0,2,0"
+                Content="Team"
+                Style="{StaticResource tabButton}" />
                 <Button
-                    Grid.Column="2"
-                    Content="Leader"
-                    Style="{StaticResource tabButton}" />
+                Grid.Column="2"
+                Content="Leader"
+                Style="{StaticResource tabButton}" />
             </UniformGrid>
             <!--  Employee Card Stack  -->
             <StackPanel Margin="0,0,0,0" Orientation="Vertical">
                 <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
+                Width="280"
+                Height="120"
+                Margin="0,12,0,0">
                     <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
+                    Background="#527c9d"
+                    CornerRadius="8"
+                    Opacity="0.3" />
                     <Grid Margin="24,12,24,12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32" />
@@ -138,40 +142,40 @@
                         </Grid.RowDefinitions>
                         <DockPanel>
                             <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
+                            Width="32"
+                            Height="32"
+                            DockPanel.Dock="Left"
+                            Source="/Images/avartar.png" />
                             <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right"
+                            Source="/Images/more-horizontal.png" />
                         </DockPanel>
                         <DockPanel Grid.Row="1" Margin="0,4,0,0">
                             <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            DockPanel.Dock="Top"
+                            FontSize="18"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            Foreground="#cad3d7"
+                            Text="Tester" />
                         </DockPanel>
                     </Grid>
                 </Grid>
                 <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
+                Width="280"
+                Height="120"
+                Margin="0,12,0,0">
                     <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
+                    Background="#527c9d"
+                    CornerRadius="8"
+                    Opacity="0.3" />
                     <Grid Margin="24,12,24,12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32" />
@@ -179,40 +183,40 @@
                         </Grid.RowDefinitions>
                         <DockPanel>
                             <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
+                            Width="32"
+                            Height="32"
+                            DockPanel.Dock="Left"
+                            Source="/Images/avartar.png" />
                             <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right"
+                            Source="/Images/more-horizontal.png" />
                         </DockPanel>
                         <DockPanel Grid.Row="1" Margin="0,4,0,0">
                             <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            DockPanel.Dock="Top"
+                            FontSize="18"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            Foreground="#cad3d7"
+                            Text="Tester" />
                         </DockPanel>
                     </Grid>
                 </Grid>
                 <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
+                Width="280"
+                Height="120"
+                Margin="0,12,0,0">
                     <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
+                    Background="#527c9d"
+                    CornerRadius="8"
+                    Opacity="0.3" />
                     <Grid Margin="24,12,24,12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32" />
@@ -220,40 +224,40 @@
                         </Grid.RowDefinitions>
                         <DockPanel>
                             <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
+                            Width="32"
+                            Height="32"
+                            DockPanel.Dock="Left"
+                            Source="/Images/avartar.png" />
                             <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right"
+                            Source="/Images/more-horizontal.png" />
                         </DockPanel>
                         <DockPanel Grid.Row="1" Margin="0,4,0,0">
                             <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            DockPanel.Dock="Top"
+                            FontSize="18"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            Foreground="#cad3d7"
+                            Text="Tester" />
                         </DockPanel>
                     </Grid>
                 </Grid>
                 <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
+                Width="280"
+                Height="120"
+                Margin="0,12,0,0">
                     <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
+                    Background="#527c9d"
+                    CornerRadius="8"
+                    Opacity="0.3" />
                     <Grid Margin="24,12,24,12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32" />
@@ -261,40 +265,40 @@
                         </Grid.RowDefinitions>
                         <DockPanel>
                             <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
+                            Width="32"
+                            Height="32"
+                            DockPanel.Dock="Left"
+                            Source="/Images/avartar.png" />
                             <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right"
+                            Source="/Images/more-horizontal.png" />
                         </DockPanel>
                         <DockPanel Grid.Row="1" Margin="0,4,0,0">
                             <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            DockPanel.Dock="Top"
+                            FontSize="18"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            Foreground="#cad3d7"
+                            Text="Tester" />
                         </DockPanel>
                     </Grid>
                 </Grid>
                 <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
+                Width="280"
+                Height="120"
+                Margin="0,12,0,0">
                     <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
+                    Background="#527c9d"
+                    CornerRadius="8"
+                    Opacity="0.3" />
                     <Grid Margin="24,12,24,12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="32" />
@@ -302,29 +306,29 @@
                         </Grid.RowDefinitions>
                         <DockPanel>
                             <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
+                            Width="32"
+                            Height="32"
+                            DockPanel.Dock="Left"
+                            Source="/Images/avartar.png" />
                             <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
+                            Width="20"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            DockPanel.Dock="Right"
+                            Source="/Images/more-horizontal.png" />
                         </DockPanel>
                         <DockPanel Grid.Row="1" Margin="0,4,0,0">
                             <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            DockPanel.Dock="Top"
+                            FontSize="18"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
+                            VerticalAlignment="Bottom"
+                            DockPanel.Dock="Bottom"
+                            FontSize="14"
+                            Foreground="#cad3d7"
+                            Text="Tester" />
                         </DockPanel>
                     </Grid>
                 </Grid>
@@ -333,38 +337,38 @@
         <!--  Main Component  -->
         <Grid Grid.Column="1">
             <Border
-                Background="#527c9d"
-                CornerRadius="24"
-                Opacity="0.3" />
+            Background="#527c9d"
+            CornerRadius="24"
+            Opacity="0.3" />
             <Grid Margin="24">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="384" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Border
-                    Margin="0,0,24,0"
-                    Background="#527c9d"
-                    CornerRadius="24"
-                    Opacity="0.3" />
+                Margin="0,0,24,0"
+                Background="#527c9d"
+                CornerRadius="24"
+                Opacity="0.3" />
                 <Border
-                    Grid.Column="1"
-                    Background="#527c9d"
-                    CornerRadius="24"
-                    Opacity="0.3" />
+                Grid.Column="1"
+                Background="#527c9d"
+                CornerRadius="24"
+                Opacity="0.3" />
                 <!--  Main Left Component  -->
                 <DockPanel Margin="0,0,24,0">
                     <StackPanel
-                        Width="280"
-                        Height="206"
-                        Margin="40,40,40,0"
-                        DockPanel.Dock="Top">
+                    Width="280"
+                    Height="206"
+                    Margin="40,40,40,0"
+                    DockPanel.Dock="Top">
                         <Grid>
                             <Border
-                                Width="121"
-                                Height="121"
-                                HorizontalAlignment="Center"
-                                Background="#fff"
-                                CornerRadius="100">
+                            Width="121"
+                            Height="121"
+                            HorizontalAlignment="Center"
+                            Background="#fff"
+                            CornerRadius="100">
                                 <Ellipse Width="120" Height="120">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="/Images/Profil.png" />
@@ -372,94 +376,94 @@
                                 </Ellipse>
                             </Border>
                             <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,-80,0"
-                                VerticalAlignment="Bottom"
-                                Source="/Images/Group 21289.png" />
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,-80,0"
+                            VerticalAlignment="Bottom"
+                            Source="/Images/Group 21289.png" />
                         </Grid>
 
                         <DockPanel Margin="0,24,0,0">
                             <TextBlock
-                                Margin="0,-5,0,0"
-                                VerticalAlignment="Center"
-                                FontSize="28"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                            Margin="0,-5,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="28"
+                            Foreground="#fff"
+                            Text="Nguyen Van Son" />
                             <Border
-                                Width="51"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                Background="#B9CCB8"
-                                CornerRadius="4"
-                                DockPanel.Dock="Right">
+                            Width="51"
+                            Height="20"
+                            HorizontalAlignment="Right"
+                            Background="#B9CCB8"
+                            CornerRadius="4"
+                            DockPanel.Dock="Right">
                                 <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="10"
-                                    Foreground="#0b9300"
-                                    Text="Member" />
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="10"
+                                Foreground="#0b9300"
+                                Text="Member" />
                             </Border>
                         </DockPanel>
                         <TextBlock
-                            Margin="0,4,0,0"
-                            HorizontalAlignment="Center"
-                            FontSize="20"
-                            Foreground="#A0ABB4"
-                            Text="Tester" />
+                        Margin="0,4,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Foreground="#A0ABB4"
+                        Text="Tester" />
                     </StackPanel>
                     <StackPanel
-                        Width="280"
-                        Height="128"
-                        Margin="0,40"
-                        DockPanel.Dock="Top">
-                        <Button Style="{StaticResource infoButton}" Background="#527C9B">
+                    Width="280"
+                    Height="128"
+                    Margin="0,40"
+                    DockPanel.Dock="Top">
+                        <Button Background="#527C9B" Style="{StaticResource infoButton}">
                             <StackPanel Orientation="Horizontal">
                                 <Image
-                                    Width="24"
-                                    Height="24"
-                                    Margin="24,0,0,0"
-                                    Source="/Images/user.png" />
+                                Width="24"
+                                Height="24"
+                                Margin="24,0,0,0"
+                                Source="/Images/user.png" />
                                 <TextBlock
-                                    Margin="24,0"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="#fff"
-                                    Text="Thông tin nhân viên" />
+                                Margin="24,0"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="#fff"
+                                Text="Thông tin nhân viên" />
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource infoButton}" Background="#527C9B">
+                        <Button Background="#527C9B" Style="{StaticResource infoButton}">
                             <StackPanel Orientation="Horizontal">
                                 <Image
-                                    Width="24"
-                                    Height="24"
-                                    Margin="24,0,0,0"
-                                    Source="/Images/grid.png" />
+                                Width="24"
+                                Height="24"
+                                Margin="24,0,0,0"
+                                Source="/Images/grid.png" />
                                 <TextBlock
-                                    Margin="24,0"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="#fff"
-                                    Text="Dữ liệu làm việc" />
+                                Margin="24,0"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="#fff"
+                                Text="Dữ liệu làm việc" />
                             </StackPanel>
                         </Button>
                     </StackPanel>
                     <StackPanel
-                        Width="123"
-                        Height="61"
-                        Margin="40,0,0,40"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom"
-                        DockPanel.Dock="Top">
+                    Width="123"
+                    Height="61"
+                    Margin="40,0,0,40"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    DockPanel.Dock="Top">
                         <TextBlock
-                            FontSize="20"
-                            Foreground="#A0ABB4"
-                            Text="Thời gian tạo" />
+                        FontSize="20"
+                        Foreground="#A0ABB4"
+                        Text="Thời gian tạo" />
                         <TextBlock
-                            Margin="0,10,0,0"
-                            FontSize="18"
-                            Foreground="#fff"
-                            Text="17/02/2020" />
+                        Margin="0,10,0,0"
+                        FontSize="18"
+                        Foreground="#fff"
+                        Text="17/02/2020" />
                     </StackPanel>
                 </DockPanel>
                 <!--  Main Body Component  -->
@@ -469,99 +473,102 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBlock
-                        FontSize="28"
-                        Foreground="#fff"
-                        Text="Thông tin cá nhân" />
+                    FontSize="28"
+                    Foreground="#fff"
+                    Text="Thông tin cá nhân" />
                     <!--  Form Info  -->
                     <StackPanel Grid.Row="1" Margin="88,56,88,0">
                         <Label
-                            Margin="0,24,0,4"
-                            Content="Họ và tên"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
+                        Margin="0,24,0,4"
+                        Content="Họ và tên"
+                        FontSize="16"
+                        Foreground="#A0ABB4" />
                         <Grid Height="56">
                             <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                                       Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
+                                   Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
                             <TextBox Style="{StaticResource infoTextbox}" Text="Nguyen Van Son" />
                             <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,13.5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Source="/Images/edit-3.png" />
                         </Grid>
                         <Label
-                            Margin="0,24,0,4"
-                            Content="Email"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
+                        Margin="0,24,0,4"
+                        Content="Email"
+                        FontSize="16"
+                        Foreground="#A0ABB4" />
                         <Grid Height="56">
                             <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                                Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
+                            Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
                             <TextBox Style="{StaticResource infoTextbox}" Text="nguyenvanson98123@gmail.com" />
                             <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,13.5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Source="/Images/edit-3.png" />
                         </Grid>
                         <Label
-                            Margin="0,24,0,4"
-                            Content="Số điện thoại"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
+                        Margin="0,24,0,4"
+                        Content="Số điện thoại"
+                        FontSize="16"
+                        Foreground="#A0ABB4" />
                         <Grid Height="56">
                             <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                                Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
+                            Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
                             <TextBox Style="{StaticResource infoTextbox}" Text="0364752585" />
                             <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,13.5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Source="/Images/edit-3.png" />
                         </Grid>
                         <Label
-                            Margin="0,24,0,4"
-                            Content="Ngày sinh"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
+                        Margin="0,24,0,4"
+                        Content="Ngày sinh"
+                        FontSize="16"
+                        Foreground="#A0ABB4" />
                         <Grid Height="56">
                             <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-               Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
+           Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
                             <TextBox Style="{StaticResource infoTextbox}" Text="15/9/1998" />
                             <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,13.5,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Source="/Images/edit-3.png" />
                         </Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 56 0 0">
-                            <Button Style="{StaticResource formButton}" Background="Transparent">
+                        <StackPanel
+                        Margin="0,56,0,0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                            <Button Background="Transparent" Style="{StaticResource formButton}">
 
                                 <TextBlock
-                                        Margin="24,0"
-                                        VerticalAlignment="Center"
-                                        FontSize="20"
-                                        HorizontalAlignment="Center"
-                                        Foreground="#fff"
-                                        Text="Hủy" />
+                                Margin="24,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="#fff"
+                                Text="Hủy" />
                             </Button>
-                            <Button Style="{StaticResource formButton}" Background="#338ACB">
+                            <Button Background="#338ACB" Style="{StaticResource formButton}">
 
                                 <TextBlock
-                                        Margin="24,0"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        FontSize="20"
-                                        Foreground="#fff"
-                                        Text="Lưu" />
+                                Margin="24,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Foreground="#fff"
+                                Text="Lưu" />
                             </Button>
                         </StackPanel>
                     </StackPanel>

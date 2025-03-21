@@ -1,4 +1,5 @@
-﻿using EmployeeManager.ViewModels;
+﻿using EmployeeManager.Components;
+using EmployeeManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

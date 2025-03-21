@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using EmployeeManager.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new AppLayoutViewModel();
     }
+
+
 
 }

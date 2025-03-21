@@ -5,6 +5,12 @@
     xmlns:local="clr-namespace:EmployeeManager"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/Themes/DropdownMenu.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/DropdownMenu.xaml"/>
+                <ResourceDictionary Source="/Themes/AppLayout.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
