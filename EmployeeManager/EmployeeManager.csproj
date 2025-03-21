@@ -13,12 +13,16 @@
     <None Remove="Images\bell-icon.png" />
     <None Remove="Images\chart-icon.png" />
     <None Remove="Images\ChevronDown.png" />
+    <None Remove="Images\edit-3.png" />
+    <None Remove="Images\Group 21289.png" />
     <None Remove="Images\more-horizontal.png" />
     <None Remove="Images\music-icon.png" />
     <None Remove="Images\PencilAlt.png" />
     <None Remove="Images\person-icon.png" />
     <None Remove="Images\plus-icon.png" />
+    <None Remove="Images\Profil.png" />
     <None Remove="Images\Search.png" />
+    <None Remove="Images\search2.png" />
     <None Remove="Images\team.png" />
     <None Remove="Images\Trash.png" />
     <None Remove="Images\upload.png" />
@@ -42,6 +46,12 @@
     <Resource Include="Images\ChevronDown.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\edit-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Group 21289.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\more-horizontal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -57,7 +67,13 @@
     <Resource Include="Images\plus-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Profil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Search.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\search2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\team.png">

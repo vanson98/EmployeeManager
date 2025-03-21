@@ -442,9 +442,9 @@
             <Border.Background>
                 <SolidColorBrush Opacity="0.3" Color="#527c9b" />
             </Border.Background>
-            <Border.Effect>
+            <!--<Border.Effect>
                 <BlurEffect KernelType="Box" Radius="3" />
-            </Border.Effect>
+            </Border.Effect>-->
         </Border>
         <Grid Margin="24">
             <Grid.RowDefinitions>

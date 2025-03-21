@@ -33,7 +33,7 @@
     <Grid>
         <Border>
             <Border.Background>
-                <VisualBrush>
+                <!--<VisualBrush>
                     <VisualBrush.Visual>
                         <Image Source="/Images/window-bg-image.png">
                             <Image.BitmapEffect>
@@ -41,7 +41,8 @@
                             </Image.BitmapEffect>
                         </Image>
                     </VisualBrush.Visual>
-                </VisualBrush>
+                </VisualBrush>-->
+                <ImageBrush ImageSource="/Images/window-bg-image.png" Opacity="1" />
             </Border.Background>
 
 
