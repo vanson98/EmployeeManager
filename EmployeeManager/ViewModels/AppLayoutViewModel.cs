@@ -13,12 +13,16 @@ namespace EmployeeManager.ViewModels
     public partial class AppLayoutViewModel : ObservableObject
     {
         [ObservableProperty]
-        private UserControl _viewComponent = new EmployeeList();
+        private object _currentViewModel;
         
+        public AppLayoutViewModel()
+        {
+            _currentViewModel = new EmployeeListViewModel();
+        }
         [RelayCommand]        
         public void MoveToInfoView()
         {
-            ViewComponent = new EmployeeInfo();
+            CurrentViewModel = new EmployeeInfoViewModel();
         }
     }
 }
