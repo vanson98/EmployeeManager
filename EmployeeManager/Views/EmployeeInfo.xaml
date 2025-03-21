@@ -43,47 +43,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="infoTextbox" TargetType="TextBox">
-            <Setter Property="Background" Value="#768B9B" />
-            <Setter Property="Foreground" Value="#fff" />
-            <Setter Property="Height" Value="56" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="Padding" Value="16,13.5" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="24"
-                            SnapsToDevicePixels="True">
-                            <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="BorderBrush" Value="Green" />
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter TargetName="border" Property="BorderBrush" Value="red" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style
-            x:Key="formButton"
-            BasedOn="{StaticResource infoButton}"
-            TargetType="Button">
-            <Setter Property="Width" Value="240" />
-            <Setter Property="Margin" Value="24,0,0,0" />
-        </Style>
+       
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -350,11 +310,7 @@
                 Background="#527c9d"
                 CornerRadius="24"
                 Opacity="0.3" />
-                <Border
-                Grid.Column="1"
-                Background="#527c9d"
-                CornerRadius="24"
-                Opacity="0.3" />
+               
                 <!--  Main Left Component  -->
                 <DockPanel Margin="0,0,24,0">
                     <StackPanel
@@ -467,111 +423,12 @@
                     </StackPanel>
                 </DockPanel>
                 <!--  Main Body Component  -->
-                <Grid Grid.Column="1" Margin="40,40,40,123">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock
-                    FontSize="28"
-                    Foreground="#fff"
-                    Text="Thông tin cá nhân" />
+                <Grid Grid.Column="1">
+                   
                     <!--  Form Info  -->
-                    <StackPanel Grid.Row="1" Margin="88,56,88,0">
-                        <Label
-                        Margin="0,24,0,4"
-                        Content="Họ và tên"
-                        FontSize="16"
-                        Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                                   Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
-                            <TextBox Style="{StaticResource infoTextbox}" Text="Nguyen Van Son" />
-                            <Image
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,13.5,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                        Margin="0,24,0,4"
-                        Content="Email"
-                        FontSize="16"
-                        Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                            Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
-                            <TextBox Style="{StaticResource infoTextbox}" Text="nguyenvanson98123@gmail.com" />
-                            <Image
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,13.5,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                        Margin="0,24,0,4"
-                        Content="Số điện thoại"
-                        FontSize="16"
-                        Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-                            Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
-                            <TextBox Style="{StaticResource infoTextbox}" Text="0364752585" />
-                            <Image
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,13.5,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                        Margin="0,24,0,4"
-                        Content="Ngày sinh"
-                        FontSize="16"
-                        Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <!--<TextBlock Text="Nhập họ và tên" FontSize="18" Foreground="#A0ABB4" VerticalAlignment="Center" Margin="16 13.5" IsHitTestVisible="False"
-           Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>-->
-                            <TextBox Style="{StaticResource infoTextbox}" Text="15/9/1998" />
-                            <Image
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,13.5,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Source="/Images/edit-3.png" />
-                        </Grid>
-                        <StackPanel
-                        Margin="0,56,0,0"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                            <Button Background="Transparent" Style="{StaticResource formButton}">
-
-                                <TextBlock
-                                Margin="24,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Foreground="#fff"
-                                Text="Hủy" />
-                            </Button>
-                            <Button Background="#338ACB" Style="{StaticResource formButton}">
-
-                                <TextBlock
-                                Margin="24,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Foreground="#fff"
-                                Text="Lưu" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
+                    <!--<components:EmployeeInfoUpdateForm Grid.Row="1" />-->
+                    <!--Chart Info-->
+                    <components:EmployeeInfoChart Grid.Row="1"/>
                 </Grid>
             </Grid>
         </Grid>
