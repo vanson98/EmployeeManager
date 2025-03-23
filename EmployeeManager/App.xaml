@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/DropdownMenu.xaml"/>
-                <ResourceDictionary Source="/Themes/AppLayout.xaml"/>
+                <!--<ResourceDictionary Source="/Themes/AppLayout.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

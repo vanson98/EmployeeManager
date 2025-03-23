@@ -6,17 +6,60 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:EmployeeManager.Views"
     xmlns:viewmodels="clr-namespace:EmployeeManager.ViewModels"
+    xmlns:views="clr-namespace:EmployeeManager.Views"
     Width="1920"
     Height="1080"
     AllowsTransparency="True"
     Background="Transparent"
+    ResizeMode="CanResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="changeViewButton" TargetType="Button">
+            <Setter Property="Width" Value="56" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="50">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="WindowButton" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Border>
+        <Border MouseDown="BorderWindow_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Border.Background>
                 <!--<VisualBrush>
                   <VisualBrush.Visual>
@@ -30,8 +73,28 @@
                 <ImageBrush ImageSource="/Images/window-bg-image.png" Opacity="1" />
             </Border.Background>
         </Border>
-
-        <Grid Margin="24">
+        <Grid
+            Width="150"
+            Height="40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource WindowButton}" Grid.Column="2">
+                <Image Source="/Images/close-window.png" Width="16" Height="16"/>
+            </Button>
+            <Button Style="{StaticResource WindowButton}" Grid.Column="1">
+                <Image Source="/Images/resize-window.png" Width="16" Height="16"/>
+            </Button>
+            <Button Style="{StaticResource WindowButton}">
+                <Image Source="/Images/hide-window.png" Width="16" Height="16"/>
+            </Button>
+        </Grid>
+        <Grid Margin="24,44,24,24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
@@ -114,10 +177,10 @@
                 <ContentControl Content="{Binding CurrentViewModel}">
                     <ContentControl.Resources>
                         <DataTemplate DataType="{x:Type viewmodels:EmployeeListViewModel}">
-                            <views:EmployeeList/>
+                            <views:EmployeeList />
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type viewmodels:EmployeeInfoViewModel}">
-                            <views:EmployeeInfo/>
+                            <views:EmployeeInfo />
                         </DataTemplate>
                     </ContentControl.Resources>
                 </ContentControl>
