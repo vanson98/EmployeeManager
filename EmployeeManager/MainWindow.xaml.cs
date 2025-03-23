@@ -17,11 +17,12 @@ namespace EmployeeManager;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private bool IsMaximized = false;
+    private bool IsMaximized = true;
     public MainWindow()
     {
         InitializeComponent();
         DataContext = new AppLayoutViewModel();
+        this.WindowState = WindowState.Maximized;
     }
 
     private void BorderWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -49,5 +50,21 @@ public partial class MainWindow : Window
                 IsMaximized = true;
             }
         }
+    }
+
+    private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+
+    private void ResizeWindowButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.WindowState = WindowState.Normal;
+    }
+
+    private void HideWindowButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.Hide();
+        this.ShowInTaskbar = true;
     }
 }

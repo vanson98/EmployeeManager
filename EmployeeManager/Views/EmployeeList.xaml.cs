@@ -27,5 +27,7 @@ namespace EmployeeManager.Views
             InitializeComponent();
             DataContext = new EmployeeListViewModel();
         }
+
+       
     }
 }

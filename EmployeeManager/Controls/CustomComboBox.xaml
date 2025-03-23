@@ -1,9 +1,9 @@
 ﻿<UserControl
-    x:Class="EmployeeManager.Components.CustomComboBox"
+    x:Class="EmployeeManager.Controls.CustomComboBox"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:EmployeeManager.Components"
+    xmlns:local="clr-namespace:EmployeeManager.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
     mc:Ignorable="d">
@@ -225,14 +225,7 @@
             HorizontalContentAlignment="Left"
             Style="{DynamicResource ComboBoxStyle}"
             Tag="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}">
-            <ComboBoxItem Name="Manager">Manager</ComboBoxItem>
-            <ComboBoxItem Name="Developer">Developer</ComboBoxItem>
-            <ComboBoxItem Name="Manager1">Manager</ComboBoxItem>
-            <ComboBoxItem Name="Developer1">Developer</ComboBoxItem>
-            <ComboBoxItem Name="Manager2">Manager</ComboBoxItem>
-            <ComboBoxItem Name="Develope2r">Developer</ComboBoxItem>
-            <ComboBoxItem Name="Manage2r">Manager</ComboBoxItem>
-            <ComboBoxItem Name="Devel2oper">Developer</ComboBoxItem>
+            
         </ComboBox>
     </Grid>
 </UserControl>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EmployeeManager.Components
+namespace EmployeeManager.Controls
 {
     /// <summary>
     /// Interaction logic for CustomComboBox.xaml

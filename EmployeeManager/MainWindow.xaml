@@ -84,13 +84,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource WindowButton}" Grid.Column="2">
+            <Button Style="{StaticResource WindowButton}" Grid.Column="2" Click="CloseWindowButton_Click">
                 <Image Source="/Images/close-window.png" Width="16" Height="16"/>
             </Button>
-            <Button Style="{StaticResource WindowButton}" Grid.Column="1">
+            <Button Style="{StaticResource WindowButton}" Grid.Column="1" Click="ResizeWindowButton_Click">
                 <Image Source="/Images/resize-window.png" Width="16" Height="16"/>
             </Button>
-            <Button Style="{StaticResource WindowButton}">
+            <Button Style="{StaticResource WindowButton}" Click="HideWindowButton_Click">
                 <Image Source="/Images/hide-window.png" Width="16" Height="16"/>
             </Button>
         </Grid>

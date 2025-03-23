@@ -18,6 +18,7 @@
     <None Remove="Images\grid.png" />
     <None Remove="Images\Group 21289.png" />
     <None Remove="Images\hide-window.png" />
+    <None Remove="Images\left-arrow.png" />
     <None Remove="Images\more-horizontal.png" />
     <None Remove="Images\music-icon.png" />
     <None Remove="Images\PencilAlt.png" />
@@ -25,6 +26,7 @@
     <None Remove="Images\plus-icon.png" />
     <None Remove="Images\Profil.png" />
     <None Remove="Images\resize-window.png" />
+    <None Remove="Images\right-arrow.png" />
     <None Remove="Images\Search.png" />
     <None Remove="Images\search2.png" />
     <None Remove="Images\team.png" />
@@ -65,6 +67,9 @@
     <Resource Include="Images\hide-window.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\left-arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\more-horizontal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -84,6 +89,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\resize-window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\right-arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Search.png">
