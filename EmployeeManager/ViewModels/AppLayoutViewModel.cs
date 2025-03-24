@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EmployeeManager.Models;
 using EmployeeManager.Views;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,32 @@ namespace EmployeeManager.ViewModels
     {
         [ObservableProperty]
         private object _currentViewModel;
+
+        [ObservableProperty]
+        private EmployeeModel? _currentEmployeeDetail;
         
         public AppLayoutViewModel()
         {
             _currentViewModel = new EmployeeListViewModel();
+            _currentEmployeeDetail = null;
         }
+        
         [RelayCommand]        
-        public void MoveToInfoView()
+        private void MoveToInfoView(EmployeeModel employee)
         {
             CurrentViewModel = new EmployeeInfoViewModel();
+            CurrentEmployeeDetail = employee;
+        }
+        
+        [RelayCommand]
+        private void MoveToListEmployeeView()
+        {
+            if (CurrentEmployeeDetail == null)
+            {
+                return;
+            }
+            CurrentViewModel = new EmployeeListViewModel();
+            CurrentEmployeeDetail = null;
         }
     }
 }

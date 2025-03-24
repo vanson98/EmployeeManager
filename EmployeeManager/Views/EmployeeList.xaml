@@ -498,17 +498,7 @@
                 <!--  Grid Panel  -->
                 <DockPanel LastChildFill="True">
                     <!--  ComboBoxs  -->
-                    <custom:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ">
-                        
-                        <ComboBoxItem Name="Manager">Manager</ComboBoxItem>
-                        <ComboBoxItem Name="Developer">Developer</ComboBoxItem>
-                        <ComboBoxItem Name="Manager1">Manager</ComboBoxItem>
-                        <ComboBoxItem Name="Developer1">Developer</ComboBoxItem>
-                        <ComboBoxItem Name="Manager2">Manager</ComboBoxItem>
-                        <ComboBoxItem Name="Develope2r">Developer</ComboBoxItem>
-                        <ComboBoxItem Name="Manage2r">Manager</ComboBoxItem>
-                        <ComboBoxItem Name="Devel2oper">Developer</ComboBoxItem>
-                    </custom:CustomComboBox>
+                    <custom:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ" />
                     <!--  Search Box  -->
                     <Grid
                         Width="374"
@@ -666,7 +656,10 @@
                                                     CornerRadius="10"
                                                     Opacity="1" />
                                                 <StackPanel>
-                                                    <Button Command="{Binding DataContext.MoveToInfoViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" Style="{StaticResource GridMenuActionButton}">
+                                                    <Button
+                                                        Command="{Binding DataContext.MoveToInfoViewCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                        CommandParameter="{Binding Employee, Mode=OneWay}"
+                                                        Style="{StaticResource GridMenuActionButton}">
                                                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                                             <Image
                                                                 Width="20"

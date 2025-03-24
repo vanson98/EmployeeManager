@@ -12,6 +12,7 @@
     <None Remove="Images\avartar.png" />
     <None Remove="Images\bell-icon.png" />
     <None Remove="Images\chart-icon.png" />
+    <None Remove="Images\chevron-right.png" />
     <None Remove="Images\ChevronDown.png" />
     <None Remove="Images\close-window.png" />
     <None Remove="Images\edit-3.png" />
@@ -33,6 +34,12 @@
     <None Remove="Images\Trash.png" />
     <None Remove="Images\upload.png" />
     <None Remove="Images\window-bg-image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\chevron-right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

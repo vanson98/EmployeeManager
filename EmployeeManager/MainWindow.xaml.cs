@@ -22,7 +22,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = new AppLayoutViewModel();
-        this.WindowState = WindowState.Maximized;
+        //this.WindowState = WindowState.Maximized;
     }
 
     private void BorderWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -67,4 +67,5 @@ public partial class MainWindow : Window
         this.Hide();
         this.ShowInTaskbar = true;
     }
+
 }

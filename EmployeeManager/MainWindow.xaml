@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:EmployeeManager.Components"
+    xmlns:converter="clr-namespace:EmployeeManager.Controls.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,6 +18,7 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <Window.Resources>
+        <converter:IsNullToVisibilityConverter x:Key="IsNullToVisibilityConverter" />
         <Style x:Key="changeViewButton" TargetType="Button">
             <Setter Property="Width" Value="56" />
             <Setter Property="Height" Value="56" />
@@ -40,7 +42,7 @@
         <Style x:Key="WindowButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="Width" Value="50" />
-            <Setter Property="Height" Value="40"/>
+            <Setter Property="Height" Value="40" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -53,8 +55,18 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Gray"/>
+                    <Setter Property="Background" Value="Gray" />
                 </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="WindowTitle" TargetType="Hyperlink">
+            <Setter Property="Foreground" Value="#A0ABB4" />
+            <Setter Property="FontSize" Value="24" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentEmployeeDetail}" Value="{x:Null}">
+                    <Setter Property="Foreground" Value="#fff" />
+                    <Setter Property="FontSize" Value="32" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
@@ -77,21 +89,35 @@
             Width="150"
             Height="40"
             HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            >
+            VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource WindowButton}" Grid.Column="2" Click="CloseWindowButton_Click">
-                <Image Source="/Images/close-window.png" Width="16" Height="16"/>
+            <Button
+                Grid.Column="2"
+                Click="CloseWindowButton_Click"
+                Style="{StaticResource WindowButton}">
+                <Image
+                    Width="16"
+                    Height="16"
+                    Source="/Images/close-window.png" />
             </Button>
-            <Button Style="{StaticResource WindowButton}" Grid.Column="1" Click="ResizeWindowButton_Click">
-                <Image Source="/Images/resize-window.png" Width="16" Height="16"/>
+            <Button
+                Grid.Column="1"
+                Click="ResizeWindowButton_Click"
+                Style="{StaticResource WindowButton}">
+                <Image
+                    Width="16"
+                    Height="16"
+                    Source="/Images/resize-window.png" />
             </Button>
-            <Button Style="{StaticResource WindowButton}" Click="HideWindowButton_Click">
-                <Image Source="/Images/hide-window.png" Width="16" Height="16"/>
+            <Button Click="HideWindowButton_Click" Style="{StaticResource WindowButton}">
+                <Image
+                    Width="16"
+                    Height="16"
+                    Source="/Images/hide-window.png" />
             </Button>
         </Grid>
         <Grid Margin="24,44,24,24">
@@ -107,14 +133,31 @@
                         Height="80"
                         Source="/Images/team.png"
                         Stretch="Fill" />
+
+                    <TextBlock VerticalAlignment="Center" Margin="-10 0 0 6">
+                        <Hyperlink
+                            Style="{StaticResource WindowTitle}"
+                            Command="{Binding DataContext.MoveToListEmployeeViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            TextDecorations="{x:Null}">
+                            Danh sách nhân viên
+                        </Hyperlink>
+                    </TextBlock>
+                    
+                    <Image
+                        Width="24"
+                        Height="24"
+                        Margin="8,0"
+                        Source="/Images/chevron-right.png"
+                        Visibility="{Binding CurrentEmployeeDetail, Converter={StaticResource IsNullToVisibilityConverter}}" />
                     <TextBlock
-                        Width="320"
+                        Width="400"
                         Height="39"
-                        Margin="-10,0,0,10"
+                        Margin="0,0,0,8"
                         VerticalAlignment="Center"
-                        FontSize="32"
+                        FontSize="28"
                         Foreground="White"
-                        Text="Danh sách nhân viên" />
+                        Text="{Binding CurrentEmployeeDetail.Name}"
+                        Visibility="{Binding CurrentEmployeeDetail, Converter={StaticResource IsNullToVisibilityConverter}}" />
                 </StackPanel>
                 <StackPanel
                     Width="376"
