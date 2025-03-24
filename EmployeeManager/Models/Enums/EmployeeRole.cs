@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EmployeeManager.Models.Enums
 {
-    public enum EmployeeStatus
+    public enum EmployeeRole
     {
-        Online,
-        Offline, 
-        Update
+        Developer,
+        Designer,
+        Tester
     }
 }

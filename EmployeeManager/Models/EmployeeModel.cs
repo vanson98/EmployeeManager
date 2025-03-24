@@ -13,7 +13,7 @@ namespace EmployeeManager.Models
         public required string Name { get; set; }
         public string Email { get; set; }
         public DateTime Dob { get; set; }
-        public required string Role { get; set; }
+        public required EmployeeRole Role { get; set; }
         public DateTime CreatedDate { get; set; }
         public required EmployeeStatus Status { get; set; }
     }

@@ -66,16 +66,17 @@ namespace EmployeeManager.ViewModels
             }
         }
 
+
         [RelayCommand]
         private void ToggleEmployeeStatus()
         {
-            if (Status is EmployeeStatus.Active)
+            if (Status is EmployeeStatus.Online)
             {
-                Status = EmployeeStatus.Unactive;
+                Status = EmployeeStatus.Offline;
             }
             else
             {
-                Status = EmployeeStatus.Active;
+                Status = EmployeeStatus.Online;
             }
         }
     }

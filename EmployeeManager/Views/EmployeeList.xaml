@@ -392,11 +392,11 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Status}" Value="Unactive">
+                <DataTrigger Binding="{Binding Status}" Value="Offline">
                     <Setter Property="Background" Value="#CACACA" />
                     <Setter Property="Foreground" Value="#000" />
                 </DataTrigger>
-                <DataTrigger Binding="{Binding Status}" Value="Active">
+                <DataTrigger Binding="{Binding Status}" Value="Online">
                     <Setter Property="Background" Value="#ceffca" />
                     <Setter Property="Foreground" Value="#0caa00" />
                 </DataTrigger>
@@ -498,7 +498,17 @@
                 <!--  Grid Panel  -->
                 <DockPanel LastChildFill="True">
                     <!--  ComboBoxs  -->
-                    <custom:CustomComboBox VerticalAlignment="Center" Tag="Chức vụ" />
+                    <custom:CustomComboBox
+                        VerticalAlignment="Center"
+                        CustomItemsSource="{Binding RoleItems}"
+                        SelectedItem="{Binding SelectedRole, Mode=OneWayToSource}"
+                        Tag="Chức vụ" />
+                    <custom:CustomComboBox
+                        Margin="24,0,0,0"
+                        VerticalAlignment="Center"
+                        CustomItemsSource="{Binding EmployeeStatusItems}"
+                        SelectedItem="{Binding SelectedStatus, Mode=OneWayToSource}"
+                        Tag="Status" />
                     <!--  Search Box  -->
                     <Grid
                         Width="374"
@@ -514,7 +524,14 @@
                             Opacity="0.5"
                             Text="Tìm kiếm"
                             Visibility="{Binding ElementName=searchBoxCtrl, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
-                        <TextBox x:Name="searchBoxCtrl" Style="{StaticResource searchBox}" />
+                        <TextBox
+                            x:Name="searchBoxCtrl"
+                            Style="{StaticResource searchBox}"
+                            Text="{Binding TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding SearchEmployeeCommand}" />
+                            </TextBox.InputBindings>
+                        </TextBox>
                         <Image
                             Width="24"
                             Height="24"
@@ -546,7 +563,7 @@
                         AutoGenerateColumns="False"
                         CellStyle="{DynamicResource DataGridCellStyle1}"
                         ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                        ItemsSource="{Binding Employees}"
+                        ItemsSource="{Binding EmployeeGridData}"
                         RowStyle="{DynamicResource DataGridRowStyle1}"
                         Style="{DynamicResource DataGridStyle1}">
                         <DataGrid.Columns>

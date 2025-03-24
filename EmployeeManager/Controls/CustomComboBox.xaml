@@ -224,8 +224,10 @@
             VerticalAlignment="Center"
             HorizontalContentAlignment="Left"
             Style="{DynamicResource ComboBoxStyle}"
-            Tag="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}">
-            
+            Tag="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            ItemsSource="{Binding CustomItemsSource, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            >
         </ComboBox>
     </Grid>
 </UserControl>
