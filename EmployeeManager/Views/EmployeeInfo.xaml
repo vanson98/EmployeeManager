@@ -458,7 +458,7 @@
                     <ContentControl Content="{Binding CurrentTabViewModel, Mode=OneWay}">
                         <ContentControl.Resources>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeUpdateFormViewModel}">
-                                <components:EmployeeInfoUpdateForm Grid.Row="1" />
+                                <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
                                 <components:EmployeeInfoChart Grid.Row="1" />

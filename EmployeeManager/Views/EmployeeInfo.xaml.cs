@@ -1,4 +1,5 @@
-﻿using EmployeeManager.ViewModels;
+﻿using EmployeeManager.Models;
+using EmployeeManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,16 @@ namespace EmployeeManager.Views
     /// </summary>
     public partial class EmployeeInfo : UserControl
     {
+        public EmployeeModel EmployeeDetailData
+        {
+            get { return (EmployeeModel)GetValue(EmployeeDetailDataProperty); }
+            set { SetValue(EmployeeDetailDataProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EmployeeDetailDataProperty =
+            DependencyProperty.Register("EmployeeDetailData", typeof(EmployeeModel), typeof(EmployeeInfo), new PropertyMetadata(null));
+
         public EmployeeInfo()
         {
             InitializeComponent();

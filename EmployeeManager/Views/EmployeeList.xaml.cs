@@ -1,4 +1,5 @@
 ﻿using EmployeeManager.Components;
+using EmployeeManager.Models;
 using EmployeeManager.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,24 +24,34 @@ namespace EmployeeManager.Views
     /// </summary>
     public partial class EmployeeList : UserControl
     {
+        public EmployeeListViewModel ViewModel { get; }
         public EmployeeList()
         {
             InitializeComponent();
-            DataContext = new EmployeeListViewModel();
+            ViewModel = new EmployeeListViewModel();
+            DataContext = ViewModel;
         }
 
-        public ObservableCollection<EmployeeViewModel> Employees
+        public ObservableCollection<EmployeeModel> Employees
         {
-            get { return (ObservableCollection<EmployeeViewModel>)GetValue(EmployeesProperty); }
+            get { return (ObservableCollection<EmployeeModel>)GetValue(EmployeesProperty); }
             set { SetValue(EmployeesProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for EmployeesData.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EmployeesProperty =
-            DependencyProperty.Register("Employees", typeof(ObservableCollection<EmployeeViewModel>), typeof(EmployeeList), new PropertyMetadata(null, EmployeesChangedCallback));
+            DependencyProperty.Register("Employees", typeof(ObservableCollection<EmployeeModel>), typeof(EmployeeList), new PropertyMetadata(null, EmployeesChanged));
 
-        private static void EmployeesChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void EmployeesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            if(d is EmployeeList control && e.NewValue is ObservableCollection<EmployeeModel> employeeModels)
+            {
+                control.ViewModel.EmployeeGridData = new ObservableCollection<EmployeeViewModel>();
+                foreach (var item in employeeModels)
+                {
+                    control.ViewModel.EmployeeGridData.Add(new EmployeeViewModel(item));
+                }
+            }
         }
     }
 }

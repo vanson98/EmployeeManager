@@ -564,7 +564,7 @@
                         AutoGenerateColumns="False"
                         CellStyle="{DynamicResource DataGridCellStyle1}"
                         ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                        ItemsSource="{Binding Employees, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                        ItemsSource="{Binding DataContext.EmployeeGridData, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
                         RowStyle="{DynamicResource DataGridRowStyle1}"
                         Style="{DynamicResource DataGridStyle1}">
                         <DataGrid.Columns>
@@ -588,7 +588,7 @@
                                                 Height="16"
                                                 Margin="10,0"
                                                 VerticalAlignment="Center" />
-                                            <TextBlock Text="{Binding Id}" />
+                                            <TextBlock Text="{Binding Employee.Id}" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

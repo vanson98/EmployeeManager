@@ -21,17 +21,12 @@ namespace EmployeeManager.ViewModels
         [ObservableProperty]
         public List<string> _employeeStatusItems = Enum.GetNames(typeof(EmployeeStatus)).ToList();
 
-        //[ObservableProperty]
-        //private List<EmployeeViewModel> _employeeGridData;
-
-        
+        [ObservableProperty]
+        private ObservableCollection<EmployeeViewModel> _employeeGridData;
 
         public EmployeeListViewModel()
         {
-            //EmployeeGridData = listEmployee;
+
         }
-
-        
-
     }
 }

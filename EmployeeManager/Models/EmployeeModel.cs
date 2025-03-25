@@ -9,12 +9,18 @@ namespace EmployeeManager.Models
 {
     public class EmployeeModel
     {
-        public required string Id { get; set; }
-        public required string Name { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime Dob { get; set; }
-        public required EmployeeRole Role { get; set; }
+        public string PhoneNumber { get; set; }
+        public EmployeeGender Gender { get; set; }
         public DateTime CreatedDate { get; set; }
-        public required EmployeeStatus Status { get; set; }
+        public DateTime Dob { get; set; }
+        public EmployeeRole Role { get; set; }
+        public EmployeeStatus Status { get; set; }
+        public int OnTime { get; set; }
+        public int Late { get; set; }
+        public int OnLeave { get; set; }
+        public string AvatarPath { get; set; } // New property for profile picture
     }
 }
