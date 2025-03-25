@@ -527,8 +527,7 @@
                         <TextBox
                             x:Name="searchBoxCtrl"
                             Style="{StaticResource searchBox}"
-                            Text="{Binding DataContext.TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
-                            >
+                            Text="{Binding DataContext.TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
                             <TextBox.InputBindings>
                                 <KeyBinding Key="Enter" Command="{Binding SearchEmployeeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                             </TextBox.InputBindings>
@@ -689,7 +688,10 @@
                                                                 Text="Sửa" />
                                                         </StackPanel>
                                                     </Button>
-                                                    <Button Style="{StaticResource GridMenuActionButton}">
+                                                    <Button
+                                                        Command="{Binding DataContext.DeleteEmployeeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                        CommandParameter="{Binding Employee.Id}"
+                                                        Style="{StaticResource GridMenuActionButton}">
                                                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                                             <Image
                                                                 Width="20"

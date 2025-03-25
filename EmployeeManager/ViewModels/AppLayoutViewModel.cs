@@ -426,7 +426,7 @@ namespace EmployeeManager.ViewModels
         }
 
         [RelayCommand]
-        public void SubmitForm(EmployeeModel updateEmployee)
+        public void SubmitUpdateForm(EmployeeModel updateEmployee)
         {
             var employee = rootData.FirstOrDefault(e => e.Id == updateEmployee.Id);
             if(employee == null)
@@ -439,6 +439,17 @@ namespace EmployeeManager.ViewModels
             employee.Gender = updateEmployee.Gender;
             employee.Email = updateEmployee.Email;
             MoveToListEmployeeView();
+        }
+
+        [RelayCommand]
+        public void DeleteEmployee(string id)
+        {
+            var removeEmployee = rootData.FirstOrDefault(e => e.Id == id);
+            if(removeEmployee != null)
+            {
+                rootData.Remove(removeEmployee);
+                SearchEmployee();
+            }
         }
     }
 }

@@ -176,7 +176,7 @@
                         </Button>
                         <Button
                             Background="#338ACB"
-                            Command="{Binding DataContext.SubmitFormCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                            Command="{Binding DataContext.SubmitUpdateFormCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                             CommandParameter="{Binding DataContext.Employee, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             Style="{StaticResource formButton}">
                             <TextBlock
