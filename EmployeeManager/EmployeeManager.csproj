@@ -33,6 +33,7 @@
     <None Remove="Images\team.png" />
     <None Remove="Images\Trash.png" />
     <None Remove="Images\upload.png" />
+    <None Remove="Images\user.png" />
     <None Remove="Images\window-bg-image.png" />
   </ItemGroup>
 
@@ -114,6 +115,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\upload.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\window-bg-image.png">

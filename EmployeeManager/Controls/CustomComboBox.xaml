@@ -83,9 +83,9 @@
                         <Border
                             x:Name="templateRoot"
                             Background="#527C9B"
-                            Opacity="0.3"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="10"
+                            Opacity="0.3"
                             SnapsToDevicePixels="true">
                             <Image
                                 Width="20"
@@ -132,7 +132,7 @@
                     PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                     <Border
                         x:Name="dropDownBorder"
-                        Background="#527C9B" 
+                        Background="#527C9B"
                         BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
                         BorderThickness="1">
                         <ScrollViewer x:Name="DropDownScrollViewer">
@@ -202,36 +202,37 @@
         </ControlTemplate>
 
         <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="Foreground" Value="#DEE5E7"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="Foreground" Value="#DEE5E7" />
             <Setter Property="FontSize" Value="18" />
             <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
         </Style>
 
-        <!-- ComboBoxItem -->
+        <!--  ComboBoxItem  -->
         <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="true"/>
-            <Setter Property="Foreground" Value="#DEE5E7"/>
-            <Setter Property="Width" Value="109"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="Foreground" Value="#DEE5E7" />
+            <Setter Property="Width" Value="109" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                        <Border Name="Border"
-                                  Padding="2"
-                                  SnapsToDevicePixels="true">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <Border
+                            Name="Border"
+                            Padding="2"
+                            SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsHighlighted" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
+                                <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -248,11 +249,9 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             HorizontalContentAlignment="Left"
-            Style="{DynamicResource ComboBoxStyle}"
-            Tag="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}"
             ItemsSource="{Binding CustomItemsSource, RelativeSource={RelativeSource AncestorType=UserControl}}"
             SelectedItem="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType=UserControl}}"
-            >
-        </ComboBox>
+            Style="{DynamicResource ComboBoxStyle}"
+            Tag="{Binding Tag, RelativeSource={RelativeSource AncestorType=UserControl}}" />
     </Grid>
 </UserControl>

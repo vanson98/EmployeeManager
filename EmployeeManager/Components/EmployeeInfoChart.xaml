@@ -23,24 +23,81 @@
                 Background="#527c9d"
                 CornerRadius="24"
                 Opacity="0.4" />
-            <DockPanel Margin="24 24 24 24">
+            <DockPanel Margin="24,24,24,24">
                 <DockPanel DockPanel.Dock="Top">
-                    <TextBlock Text="Thống kê đi muộn" Foreground="#fff" FontSize="24" FontWeight="SemiBold"/>
-                    <ComboBox HorizontalAlignment="Right" Width="120" Height="35"/>
+                    <TextBlock
+                        FontSize="24"
+                        FontWeight="SemiBold"
+                        Foreground="#fff"
+                        Text="Thống kê đi muộn" />
+                    <ComboBox
+                        Width="120"
+                        Height="35"
+                        HorizontalAlignment="Right" />
                 </DockPanel>
-                <Border Background="Gray" Width="342" Height="342" Margin="83 24 83 0" DockPanel.Dock="Top"/>
-                <Grid VerticalAlignment="Bottom" Height="79" Margin="0 26 0 0">
-                    <StackPanel Width="102" Height="79" HorizontalAlignment="Left">
-                        <TextBlock Text="19" FontSize="36" Foreground="#3FFF30" HorizontalAlignment="Center" Margin="0 0 0 6"/>
-                        <TextBlock Text="Đúng giờ" FontSize="24" Foreground="#fff" Height="33" Margin="0 -8 0 0" TextAlignment="Center"/>
+                <Border
+                    Width="342"
+                    Height="342"
+                    Margin="83,24,83,0"
+                    Background="Gray"
+                    DockPanel.Dock="Top" />
+                <Grid
+                    Height="79"
+                    Margin="0,26,0,0"
+                    VerticalAlignment="Bottom">
+                    <StackPanel
+                        Width="102"
+                        Height="79"
+                        HorizontalAlignment="Left">
+                        <TextBlock
+                            Margin="0,0,0,6"
+                            HorizontalAlignment="Center"
+                            FontSize="36"
+                            Foreground="#3FFF30"
+                            Text="19" />
+                        <TextBlock
+                            Height="33"
+                            Margin="0,-8,0,0"
+                            FontSize="24"
+                            Foreground="#fff"
+                            Text="Đúng giờ"
+                            TextAlignment="Center" />
                     </StackPanel>
-                    <StackPanel Width="102" Height="79" HorizontalAlignment="Center">
-                        <TextBlock Text="19" FontSize="36" Foreground="#FFBD2F" HorizontalAlignment="Center" Margin="0 0 0 6"/>
-                        <TextBlock Text="Đi muộn" FontSize="24" Foreground="#fff" Height="33" Margin="0 -8 0 0" TextAlignment="Center"/>
+                    <StackPanel
+                        Width="102"
+                        Height="79"
+                        HorizontalAlignment="Center">
+                        <TextBlock
+                            Margin="0,0,0,6"
+                            HorizontalAlignment="Center"
+                            FontSize="36"
+                            Foreground="#FFBD2F"
+                            Text="19" />
+                        <TextBlock
+                            Height="33"
+                            Margin="0,-8,0,0"
+                            FontSize="24"
+                            Foreground="#fff"
+                            Text="Đi muộn"
+                            TextAlignment="Center" />
                     </StackPanel>
-                    <StackPanel Width="102" Height="79" HorizontalAlignment="Right">
-                        <TextBlock Text="19" FontSize="36" Foreground="#FF1400" HorizontalAlignment="Center" Margin="0 0 0 6"/>
-                        <TextBlock Text="Nghỉ" FontSize="24" Foreground="#fff" Height="33" Margin="0 -8 0 0" TextAlignment="Center"/>
+                    <StackPanel
+                        Width="102"
+                        Height="79"
+                        HorizontalAlignment="Right">
+                        <TextBlock
+                            Margin="0,0,0,6"
+                            HorizontalAlignment="Center"
+                            FontSize="36"
+                            Foreground="#FF1400"
+                            Text="19" />
+                        <TextBlock
+                            Height="33"
+                            Margin="0,-8,0,0"
+                            FontSize="24"
+                            Foreground="#fff"
+                            Text="Nghỉ"
+                            TextAlignment="Center" />
                     </StackPanel>
                 </Grid>
             </DockPanel>
