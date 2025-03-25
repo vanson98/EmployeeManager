@@ -78,7 +78,7 @@
                 FontSize="28"
                 Foreground="#fff"
                 Text="Thông tin cá nhân" />
-            <Grid Grid.Row="1" Margin="88 56 88 0">
+            <Grid Grid.Row="1" Margin="88,56,88,0">
                 <StackPanel Grid.Row="1">
                     <Label
                         Content="Họ và tên"
@@ -147,9 +147,9 @@ Panel.ZIndex="1" Visibility="{Binding ElementName=infoTextbox, Path=Text.IsEmpty
                             VerticalAlignment="Center"
                             Source="/Images/edit-3.png" />
                     </Grid>
-                    <StackPanel Orientation="Horizontal" Margin="0 24 0 0 ">
-                        <RadioButton GroupName="Gender" Content="Nam"/>
-                        <RadioButton GroupName="Gender" Content="Nữ"/>
+                    <StackPanel Margin="0,24,0,0" Orientation="Horizontal">
+                        <RadioButton Content="Nam" GroupName="Gender" />
+                        <RadioButton Content="Nữ" GroupName="Gender" />
                     </StackPanel>
                     <StackPanel
                         Margin="0,56,0,0"

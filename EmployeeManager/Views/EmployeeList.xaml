@@ -501,13 +501,13 @@
                     <custom:CustomComboBox
                         VerticalAlignment="Center"
                         CustomItemsSource="{Binding RoleItems}"
-                        SelectedItem="{Binding SelectedRole, Mode=OneWayToSource}"
+                        SelectedItem="{Binding DataContext.SelectedRole, Mode=OneWayToSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                         Tag="Chức vụ" />
                     <custom:CustomComboBox
                         Margin="24,0,0,0"
                         VerticalAlignment="Center"
                         CustomItemsSource="{Binding EmployeeStatusItems}"
-                        SelectedItem="{Binding SelectedStatus, Mode=OneWayToSource}"
+                        SelectedItem="{Binding DataContext.SelectedStatus, Mode=OneWayToSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                         Tag="Status" />
                     <!--  Search Box  -->
                     <Grid
@@ -527,9 +527,10 @@
                         <TextBox
                             x:Name="searchBoxCtrl"
                             Style="{StaticResource searchBox}"
-                            Text="{Binding TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                            Text="{Binding DataContext.TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                            >
                             <TextBox.InputBindings>
-                                <KeyBinding Key="Enter" Command="{Binding SearchEmployeeCommand}" />
+                                <KeyBinding Key="Enter" Command="{Binding SearchEmployeeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
                             </TextBox.InputBindings>
                         </TextBox>
                         <Image
@@ -563,7 +564,7 @@
                         AutoGenerateColumns="False"
                         CellStyle="{DynamicResource DataGridCellStyle1}"
                         ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                        ItemsSource="{Binding EmployeeGridData}"
+                        ItemsSource="{Binding Employees, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
                         RowStyle="{DynamicResource DataGridRowStyle1}"
                         Style="{DynamicResource DataGridStyle1}">
                         <DataGrid.Columns>

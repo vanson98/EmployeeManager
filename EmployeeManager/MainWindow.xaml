@@ -134,15 +134,15 @@
                         Source="/Images/team.png"
                         Stretch="Fill" />
 
-                    <TextBlock VerticalAlignment="Center" Margin="-10 0 0 6">
+                    <TextBlock Margin="-10,0,0,6" VerticalAlignment="Center">
                         <Hyperlink
-                            Style="{StaticResource WindowTitle}"
                             Command="{Binding DataContext.MoveToListEmployeeViewCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            Style="{StaticResource WindowTitle}"
                             TextDecorations="{x:Null}">
                             Danh sách nhân viên
                         </Hyperlink>
                     </TextBlock>
-                    
+
                     <Image
                         Width="24"
                         Height="24"
@@ -220,7 +220,7 @@
                 <ContentControl Content="{Binding CurrentViewModel}">
                     <ContentControl.Resources>
                         <DataTemplate DataType="{x:Type viewmodels:EmployeeListViewModel}">
-                            <views:EmployeeList />
+                            <views:EmployeeList Employees="{Binding DataContext.SearchedEmployees, RelativeSource={RelativeSource AncestorType=Window}}"/>
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type viewmodels:EmployeeInfoViewModel}">
                             <views:EmployeeInfo />
