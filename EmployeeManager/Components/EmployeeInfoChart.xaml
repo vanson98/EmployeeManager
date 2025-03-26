@@ -14,8 +14,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="554" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="335" />
         </Grid.RowDefinitions>
         <Grid>
             <Border
@@ -109,12 +109,79 @@
                 CornerRadius="24"
                 Opacity="0.4" />
         </Grid>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,24,0,0">
             <Border
-                Margin="0,24,0,0"
                 Background="#527c9d"
                 CornerRadius="24"
                 Opacity="0.4" />
+            <StackPanel Margin="24 24 24 16">
+                <Grid Height="29">
+                    <TextBlock Text="Nhân viên khác" FontSize="24" Foreground="#fff"/>
+                    <Button Content="Xem toàn bộ" HorizontalAlignment="Right"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="0 24 0 0" Height="215">
+                    <Grid Width="196" Height="215" Margin="0 0 24 0">
+                        <Border Background="#527c9d" Opacity="0.4" CornerRadius="24"></Border>
+                        <StackPanel>
+                            <Border Width="100" Height="100" CornerRadius="50" BorderThickness="2" BorderBrush="Yellow" Margin="0 26 0 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Images/profile.jpg"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="Nguyen Van Son" FontSize="20" Foreground="#fff" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+                            <TextBlock Text="Developer" FontSize="16" Foreground="#fff" Opacity="0.5" HorizontalAlignment="Center" Margin="0 4 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Width="196" Height="215" Margin="0 0 24 0">
+                        <Border Background="#527c9d" Opacity="0.4" CornerRadius="24"></Border>
+                        <StackPanel>
+                            <Border Width="100" Height="100" CornerRadius="50" BorderThickness="2" BorderBrush="Yellow" Margin="0 26 0 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Images/profile.jpg"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="Nguyen Van Son" FontSize="20" Foreground="#fff" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+                            <TextBlock Text="Developer" FontSize="16" Foreground="#fff" Opacity="0.5" HorizontalAlignment="Center" Margin="0 4 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Width="196" Height="215" Margin="0 0 24 0">
+                        <Border Background="#527c9d" Opacity="0.4" CornerRadius="24"></Border>
+                        <StackPanel>
+                            <Border Width="100" Height="100" CornerRadius="50" BorderThickness="2" BorderBrush="Yellow" Margin="0 26 0 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Images/profile.jpg"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="Nguyen Van Son" FontSize="20" Foreground="#fff" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+                            <TextBlock Text="Developer" FontSize="16" Foreground="#fff" Opacity="0.5" HorizontalAlignment="Center" Margin="0 4 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Width="196" Height="215" Margin="0 0 24 0">
+                        <Border Background="#527c9d" Opacity="0.4" CornerRadius="24"></Border>
+                        <StackPanel>
+                            <Border Width="100" Height="100" CornerRadius="50" BorderThickness="2" BorderBrush="Yellow" Margin="0 26 0 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Images/profile.jpg"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="Nguyen Van Son" FontSize="20" Foreground="#fff" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+                            <TextBlock Text="Developer" FontSize="16" Foreground="#fff" Opacity="0.5" HorizontalAlignment="Center" Margin="0 4 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Width="196" Height="215" Margin="0 0 24 0">
+                        <Border Background="#527c9d" Opacity="0.4" CornerRadius="24"></Border>
+                        <StackPanel>
+                            <Border Width="100" Height="100" CornerRadius="50" BorderThickness="2" BorderBrush="Yellow" Margin="0 26 0 0">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/Images/profile.jpg"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="Nguyen Van Son" FontSize="20" Foreground="#fff" HorizontalAlignment="Center" Margin="0 16 0 0"/>
+                            <TextBlock Text="Developer" FontSize="16" Foreground="#fff" Opacity="0.5" HorizontalAlignment="Center" Margin="0 4 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

@@ -14,8 +14,9 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:TypeToStringConverter x:Key="TypeToString" />
+
         <Style x:Key="tabButton" TargetType="Button">
-            <Setter Property="Background" Value="#527c9d" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#fff" />
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Template">
@@ -50,7 +51,35 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style x:Key="EmployeeListBoxItem" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Background" Value="#527c9d" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Margin="0,12,0,0">
+                            <Border
+                                Name="Border"
+                                Padding="0"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Opacity="0.3"
+                                SnapsToDevicePixels="True" />
+                            <ContentPresenter />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="Gray" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="Green" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -58,9 +87,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <!--  Left Assign  -->
-        <StackPanel Margin="0,0,24,0" Orientation="Vertical">
+        <Grid Margin="0,0,24,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="53"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <!--  Search Panel Header  -->
-            <Grid Margin="0,0,0,24">
+            <Grid  Grid.Row="0" VerticalAlignment="Top">
                 <TextBlock
                     HorizontalAlignment="Left"
                     FontSize="18"
@@ -76,231 +110,111 @@
             <UniformGrid
                 Height="41"
                 Margin="4"
+                Background="#2E3E49"
+                Grid.Row="1"
                 Columns="3">
                 <Button
                     Grid.Column="0"
-                    Margin="0,0,2,0"
-                    Content="All"
-                    Style="{StaticResource tabButton}" />
+                    Margin="4,4,1,4"
+                    Command="{Binding FilterEmployeeTabListCommand}"
+                    CommandParameter="All"
+                    Content="All">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="All">
+                                    <Setter Property="Background" Value="#527C9B" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button
                     Grid.Column="1"
-                    Margin="0,0,2,0"
-                    Content="Team"
-                    Style="{StaticResource tabButton}" />
+                    Margin="1,4,1,4"
+                    Command="{Binding FilterEmployeeTabListCommand}"
+                    CommandParameter="Team"
+                    Content="Team">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="Team">
+                                    <Setter Property="Background" Value="#527C9B" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button
                     Grid.Column="2"
-                    Content="Leader"
-                    Style="{StaticResource tabButton}" />
+                    Margin="1,4,4,4"
+                    Command="{Binding FilterEmployeeTabListCommand}"
+                    CommandParameter="Leader"
+                    Content="Leader">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="Leader">
+                                    <Setter Property="Background" Value="#527C9B" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </UniformGrid>
             <!--  Employee Card Stack  -->
-            <StackPanel Margin="0,0,0,0" Orientation="Vertical">
-                <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
-                    <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
-                    <Grid Margin="24,12,24,12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <DockPanel>
-                            <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
-                            <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
-                        </DockPanel>
-                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
-                            <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
-                        </DockPanel>
-                    </Grid>
-                </Grid>
-                <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
-                    <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
-                    <Grid Margin="24,12,24,12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <DockPanel>
-                            <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
-                            <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
-                        </DockPanel>
-                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
-                            <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
-                        </DockPanel>
-                    </Grid>
-                </Grid>
-                <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
-                    <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
-                    <Grid Margin="24,12,24,12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <DockPanel>
-                            <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
-                            <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
-                        </DockPanel>
-                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
-                            <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
-                        </DockPanel>
-                    </Grid>
-                </Grid>
-                <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
-                    <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
-                    <Grid Margin="24,12,24,12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <DockPanel>
-                            <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
-                            <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
-                        </DockPanel>
-                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
-                            <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
-                        </DockPanel>
-                    </Grid>
-                </Grid>
-                <Grid
-                    Width="280"
-                    Height="120"
-                    Margin="0,12,0,0">
-                    <Border
-                        Background="#527c9d"
-                        CornerRadius="8"
-                        Opacity="0.3" />
-                    <Grid Margin="24,12,24,12">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <DockPanel>
-                            <Image
-                                Width="32"
-                                Height="32"
-                                DockPanel.Dock="Left"
-                                Source="/Images/avartar.png" />
-                            <Image
-                                Width="20"
-                                Height="20"
-                                HorizontalAlignment="Right"
-                                DockPanel.Dock="Right"
-                                Source="/Images/more-horizontal.png" />
-                        </DockPanel>
-                        <DockPanel Grid.Row="1" Margin="0,4,0,0">
-                            <TextBlock
-                                DockPanel.Dock="Top"
-                                FontSize="18"
-                                Foreground="#fff"
-                                Text="Nguyen Van Son" />
-                            <TextBlock
-                                VerticalAlignment="Bottom"
-                                DockPanel.Dock="Bottom"
-                                FontSize="14"
-                                Foreground="#cad3d7"
-                                Text="Tester" />
-                        </DockPanel>
-                    </Grid>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
+            <Grid Grid.Row="2">
+                <ListBox
+                    Background="Transparent"
+                    ItemContainerStyle="{StaticResource EmployeeListBoxItem}"
+                    ItemsSource="{Binding FilterEmployees}"
+                    VirtualizingStackPanel.IsVirtualizing="True"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="280" Height="120">
+                                <Grid Margin="24,12,24,12">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="32" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <DockPanel>
+                                        <Border
+                                            Width="32"
+                                            Height="32"
+                                            CornerRadius="50"
+                                            DockPanel.Dock="Left">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding AvatarPath}" />
+                                            </Border.Background>
+                                        </Border>
+                                        <Image
+                                            Width="20"
+                                            Height="20"
+                                            HorizontalAlignment="Right"
+                                            DockPanel.Dock="Right"
+                                            Source="/Images/more-horizontal.png" />
+                                    </DockPanel>
+                                    <DockPanel Grid.Row="1" Margin="0,4,0,0">
+                                        <TextBlock
+                                            DockPanel.Dock="Top"
+                                            FontSize="18"
+                                            Foreground="#fff"
+                                            Text="{Binding Name}" />
+                                        <TextBlock
+                                            VerticalAlignment="Bottom"
+                                            DockPanel.Dock="Bottom"
+                                            FontSize="14"
+                                            Foreground="#cad3d7"
+                                            Text="{Binding Role}" />
+                                    </DockPanel>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
         <!--  Main Component  -->
         <Grid Grid.Column="1">
             <Border
@@ -458,7 +372,7 @@
                     <ContentControl Content="{Binding CurrentTabViewModel, Mode=OneWay}">
                         <ContentControl.Resources>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeUpdateFormViewModel}">
-                                <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
                                 <components:EmployeeInfoChart Grid.Row="1" />

@@ -10,6 +10,14 @@
 
   <ItemGroup>
     <None Remove="Images\avartar.png" />
+    <None Remove="Images\avatars\av1.png" />
+    <None Remove="Images\avatars\av2.png" />
+    <None Remove="Images\avatars\av3.png" />
+    <None Remove="Images\avatars\av4.png" />
+    <None Remove="Images\avatars\av5.png" />
+    <None Remove="Images\avatars\av6.png" />
+    <None Remove="Images\avatars\av7.png" />
+    <None Remove="Images\avatars\av8.png" />
     <None Remove="Images\bell-icon.png" />
     <None Remove="Images\chart-icon.png" />
     <None Remove="Images\chevron-right.png" />
@@ -26,6 +34,7 @@
     <None Remove="Images\person-icon.png" />
     <None Remove="Images\plus-icon.png" />
     <None Remove="Images\Profil.png" />
+    <None Remove="Images\profile.jpg" />
     <None Remove="Images\resize-window.png" />
     <None Remove="Images\right-arrow.png" />
     <None Remove="Images\Search.png" />
@@ -35,6 +44,33 @@
     <None Remove="Images\upload.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\window-bg-image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\avatars\av1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\avatars\av8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -94,6 +130,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Profil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\profile.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\resize-window.png">

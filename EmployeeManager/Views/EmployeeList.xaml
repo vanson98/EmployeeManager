@@ -574,9 +574,9 @@
                             x:Name="searchBoxCtrl"
                             Style="{StaticResource searchBox}"
                             Text="{Binding DataContext.TextSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
-                            <TextBox.InputBindings>
+                            <!--<TextBox.InputBindings>
                                 <KeyBinding Key="Enter" Command="{Binding SearchEmployeeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
-                            </TextBox.InputBindings>
+                            </TextBox.InputBindings>-->
                         </TextBox>
                         <Image
                             Width="24"

@@ -15,7 +15,8 @@ namespace EmployeeManager.ViewModels
 {
     public partial class AppLayoutViewModel : ObservableObject
     {
-        private ObservableCollection<EmployeeModel> rootData = new()
+        [ObservableProperty]
+        private ObservableCollection<EmployeeModel> _rootData = new()
         {
             new EmployeeModel()
             {
@@ -31,7 +32,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 20,
                 Late = 5,
                 OnLeave = 2,
-                AvatarPath = "/images/avatars/nguyenvanson.png"
+                AvatarPath = "/Images/avatars/av4.png"
             },
 
             new EmployeeModel()
@@ -48,7 +49,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 18,
                 Late = 3,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/lethihoa.png"
+                AvatarPath = "/Images/avatars/av3.png"
             },
 
             new EmployeeModel()
@@ -65,7 +66,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 22,
                 Late = 1,
                 OnLeave = 0,
-                AvatarPath = "/images/avatars/tranvanbinh.png"
+                AvatarPath = "/Images/avatars/av2.png"
             },
 
             new EmployeeModel()
@@ -82,7 +83,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 19,
                 Late = 2,
                 OnLeave = 3,
-                AvatarPath = "/images/avatars/phammanh.png"
+                AvatarPath = "/Images/avatars/av1.png"
             },
 
             new EmployeeModel()
@@ -99,7 +100,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 25,
                 Late = 6,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/hoangnam.png"
+                AvatarPath = "/Images/avatars/av8.png"
             },
 
             new EmployeeModel()
@@ -116,7 +117,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 15,
                 Late = 2,
                 OnLeave = 4,
-                AvatarPath = "/images/avatars/doanthimy.png"
+                AvatarPath = "/Images/avatars/av7.png"
             },
 
             new EmployeeModel()
@@ -133,7 +134,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 17,
                 Late = 1,
                 OnLeave = 2,
-                AvatarPath = "/images/avatars/nguyenthanhtu.png"
+                AvatarPath = "/Images/avatars/av6.png"
             },
 
             new EmployeeModel()
@@ -150,7 +151,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 20,
                 Late = 4,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/phamvanlinh.png"
+                AvatarPath = "/Images/avatars/av5.png"
             },
 
             new EmployeeModel()
@@ -167,7 +168,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 23,
                 Late = 2,
                 OnLeave = 3,
-                AvatarPath = "/images/avatars/vuthilan.png"
+                AvatarPath = "/Images/avatars/av4.png"
             },
 
             new EmployeeModel()
@@ -184,7 +185,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 18,
                 Late = 1,
                 OnLeave = 2,
-                AvatarPath = "/images/avatars/levancuong.png"
+                AvatarPath = "/Images/avatars/av3.png"
             },
             new EmployeeModel()
             {
@@ -200,7 +201,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 19,
                 Late = 2,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/phamquanghuy.png"
+                AvatarPath = "/Images/avatars/av2.png"
             },
 
             new EmployeeModel()
@@ -217,7 +218,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 22,
                 Late = 1,
                 OnLeave = 0,
-                AvatarPath = "/images/avatars/tranminhkhoa.png"
+                AvatarPath = "/Images/avatars/av1.png"
             },
 
             new EmployeeModel()
@@ -234,7 +235,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 18,
                 Late = 4,
                 OnLeave = 2,
-                AvatarPath = "/images/avatars/vuthimai.png"
+                AvatarPath = "/Images/avatars/av8.png"
             },
 
             new EmployeeModel()
@@ -251,7 +252,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 20,
                 Late = 3,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/ledinhbao.png"
+                AvatarPath = "/Images/avatars/av7.png"
             },
 
             new EmployeeModel()
@@ -268,7 +269,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 17,
                 Late = 2,
                 OnLeave = 3,
-                AvatarPath = "/images/avatars/doanthithanh.png"
+                AvatarPath = "/Images/avatars/av6.png"
             },
 
             new EmployeeModel()
@@ -285,7 +286,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 23,
                 Late = 1,
                 OnLeave = 0,
-                AvatarPath = "/images/avatars/nguyentuananh.png"
+                AvatarPath = "/Images/avatars/av5.png"
             },
 
             new EmployeeModel()
@@ -302,7 +303,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 19,
                 Late = 2,
                 OnLeave = 3,
-                AvatarPath = "/images/avatars/hoangthinung.png"
+                AvatarPath = "/Images/avatars/av4.png"
             },
 
             new EmployeeModel()
@@ -319,7 +320,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 25,
                 Late = 4,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/buivanlong.png"
+                AvatarPath = "/Images/avatars/av3.png"
             },
 
             new EmployeeModel()
@@ -336,7 +337,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 21,
                 Late = 2,
                 OnLeave = 1,
-                AvatarPath = "/images/avatars/phamthanhha.png"
+                AvatarPath = "/Images/avatars/av2.png"
             },
 
             new EmployeeModel()
@@ -353,7 +354,7 @@ namespace EmployeeManager.ViewModels
                 OnTime = 20,
                 Late = 3,
                 OnLeave = 2,
-                AvatarPath = "/images/avatars/dangminhquan.png"
+                AvatarPath = "/Images/avatars/av1.png"
             }
 
         };
@@ -369,7 +370,7 @@ namespace EmployeeManager.ViewModels
 
         public AppLayoutViewModel()
         {
-            SearchedEmployees = rootData;
+            SearchedEmployees = RootData;
             _currentViewModel = new EmployeeListViewModel();
             _currentEmployeeDetail = null;
         }
@@ -422,7 +423,7 @@ namespace EmployeeManager.ViewModels
         private void SearchEmployee()
         {
             SearchedEmployees = null;
-            SearchedEmployees = [.. rootData
+            SearchedEmployees = [.. RootData
                 .Where(e => string.IsNullOrEmpty(SelectedRole) || e.Role.ToString() == SelectedRole)
                 .Where(e => string.IsNullOrEmpty(SelectedStatus) || e.Status.ToString() == SelectedStatus)
                 .Where(e => string.IsNullOrEmpty(TextSearch) || e.Email.Contains(TextSearch) || e.Name.Contains(TextSearch))];
@@ -433,7 +434,7 @@ namespace EmployeeManager.ViewModels
         [RelayCommand]
         public void SubmitUpdateForm(EmployeeModel updateEmployee)
         {
-            var employee = rootData.FirstOrDefault(e => e.Id == updateEmployee.Id);
+            var employee = RootData.FirstOrDefault(e => e.Id == updateEmployee.Id);
             if(employee == null)
             {
                 return;
@@ -449,10 +450,10 @@ namespace EmployeeManager.ViewModels
         [RelayCommand]
         public void DeleteEmployee(string id)
         {
-            var removeEmployee = rootData.FirstOrDefault(e => e.Id == id);
+            var removeEmployee = RootData.FirstOrDefault(e => e.Id == id);
             if(removeEmployee != null)
             {
-                rootData.Remove(removeEmployee);
+                RootData.Remove(removeEmployee);
                 SearchEmployee();
             }
         }
