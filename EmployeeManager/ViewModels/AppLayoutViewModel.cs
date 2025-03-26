@@ -400,6 +400,9 @@ namespace EmployeeManager.ViewModels
 
         [ObservableProperty]
         private string? _textSearch;
+        
+        [ObservableProperty]
+        private int _totalSearchRecord;
 
         partial void OnSelectedRoleChanged(string value)
         {
@@ -423,6 +426,8 @@ namespace EmployeeManager.ViewModels
                 .Where(e => string.IsNullOrEmpty(SelectedRole) || e.Role.ToString() == SelectedRole)
                 .Where(e => string.IsNullOrEmpty(SelectedStatus) || e.Status.ToString() == SelectedStatus)
                 .Where(e => string.IsNullOrEmpty(TextSearch) || e.Email.Contains(TextSearch) || e.Name.Contains(TextSearch))];
+            TotalSearchRecord = SearchedEmployees.Count();
+
         }
 
         [RelayCommand]

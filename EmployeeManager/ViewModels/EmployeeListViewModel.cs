@@ -24,9 +24,22 @@ namespace EmployeeManager.ViewModels
         [ObservableProperty]
         private ObservableCollection<EmployeeViewModel> _employeeGridData;
 
+        [ObservableProperty]
+        private int _totalRecord;
+
+        [ObservableProperty]
+        private int _totalPage;
+
+        [ObservableProperty]
+        private int _currentPage;
+
+        public int PageSize = 9;
+
         public EmployeeListViewModel()
         {
 
         }
+
+
     }
 }

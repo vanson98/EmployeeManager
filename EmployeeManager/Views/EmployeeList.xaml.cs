@@ -42,6 +42,28 @@ namespace EmployeeManager.Views
         public static readonly DependencyProperty EmployeesProperty =
             DependencyProperty.Register("Employees", typeof(ObservableCollection<EmployeeModel>), typeof(EmployeeList), new PropertyMetadata(null, EmployeesChanged));
 
+
+
+        public int TotalRecord
+        {
+            get { return (int)GetValue(TotalRecordProperty); }
+            set { SetValue(TotalRecordProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TotalRecord.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TotalRecordProperty =
+            DependencyProperty.Register("TotalRecord", typeof(int), typeof(EmployeeList), new PropertyMetadata(0, OnTotalRecordChanged));
+
+        private static void OnTotalRecordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is EmployeeList control && e.NewValue is int total)
+            {
+                control.ViewModel.TotalRecord = total;
+                control.ViewModel.TotalPage = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(total) / control.ViewModel.PageSize));
+                control.ViewModel.CurrentPage = 1;
+            }
+        }
+
         private static void EmployeesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if(d is EmployeeList control && e.NewValue is ObservableCollection<EmployeeModel> employeeModels)
