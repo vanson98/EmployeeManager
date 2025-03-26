@@ -31,9 +31,6 @@ namespace EmployeeManager.ViewModels
             _currentTabViewModel = new EmployeeUpdateFormViewModel();
         }
 
-
-      
-
         [RelayCommand]
         private void ViewChartComponent()
         {

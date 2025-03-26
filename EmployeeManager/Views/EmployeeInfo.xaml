@@ -14,6 +14,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:TypeToStringConverter x:Key="TypeToString" />
+        <converter:DateTimeToStringConverter x:Key="DateTimeToString" />
 
         <Style x:Key="tabButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
@@ -89,12 +90,12 @@
         <!--  Left Assign  -->
         <Grid Margin="0,0,24,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="48"/>
-                <RowDefinition Height="53"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="53" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <!--  Search Panel Header  -->
-            <Grid  Grid.Row="0" VerticalAlignment="Top">
+            <Grid Grid.Row="0" VerticalAlignment="Top">
                 <TextBlock
                     HorizontalAlignment="Left"
                     FontSize="18"
@@ -108,10 +109,10 @@
             </Grid>
             <!--  Tab buttons  -->
             <UniformGrid
+                Grid.Row="1"
                 Height="41"
                 Margin="4"
                 Background="#2E3E49"
-                Grid.Row="1"
                 Columns="3">
                 <Button
                     Grid.Column="0"
@@ -168,8 +169,8 @@
                     Background="Transparent"
                     ItemContainerStyle="{StaticResource EmployeeListBoxItem}"
                     ItemsSource="{Binding FilterEmployees}"
-                    VirtualizingStackPanel.IsVirtualizing="True"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    VirtualizingStackPanel.IsVirtualizing="True">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="280" Height="120">
@@ -260,20 +261,22 @@
                                 Source="/Images/Group 21289.png" />
                         </Grid>
 
-                        <DockPanel Margin="0,24,0,0">
+                        <StackPanel
+                            Margin="0,24,0,0"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
                             <TextBlock
-                                Margin="0,-5,0,0"
+                                Margin="0,-5,10,0"
                                 VerticalAlignment="Center"
                                 FontSize="28"
                                 Foreground="#fff"
-                                Text="Nguyen Van Son" />
+                                Text="{Binding EmployeeDetailData.Name, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             <Border
                                 Width="51"
                                 Height="20"
                                 HorizontalAlignment="Right"
                                 Background="#B9CCB8"
-                                CornerRadius="4"
-                                DockPanel.Dock="Right">
+                                CornerRadius="4">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
@@ -281,13 +284,12 @@
                                     Foreground="#0b9300"
                                     Text="Member" />
                             </Border>
-                        </DockPanel>
+                        </StackPanel>
                         <TextBlock
-                            Margin="0,4,0,0"
                             HorizontalAlignment="Center"
                             FontSize="20"
                             Foreground="#A0ABB4"
-                            Text="Tester" />
+                            Text="{Binding EmployeeDetailData.Role, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                     </StackPanel>
                     <StackPanel
                         Width="280"
@@ -364,7 +366,7 @@
                             Margin="0,10,0,0"
                             FontSize="18"
                             Foreground="#fff"
-                            Text="17/02/2020" />
+                            Text="{Binding EmployeeDetailData.CreatedDate,Converter={StaticResource DateTimeToString}, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                     </StackPanel>
                 </DockPanel>
                 <!--  Main Body Component  -->
@@ -375,7 +377,7 @@
                                 <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
-                                <components:EmployeeInfoChart Grid.Row="1" />
+                                <components:EmployeeInfoChart Grid.Row="1" RelatedEmployees="{Binding Employees}"/>
                             </DataTemplate>
                         </ContentControl.Resources>
                     </ContentControl>
