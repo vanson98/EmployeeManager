@@ -599,7 +599,8 @@
                         <Button
                             HorizontalAlignment="Right"
                             Content="Thêm nhân viên"
-                            Style="{StaticResource solidButton}" />
+                            Style="{StaticResource solidButton}" 
+                            />
                     </StackPanel>
                 </DockPanel>
                 <!--  Data Grid  -->
