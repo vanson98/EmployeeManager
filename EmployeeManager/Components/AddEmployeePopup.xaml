@@ -6,11 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="941"
-    d:DesignWidth="982"
+    d:DesignHeight="982"
+    x:Name="AddEmployeePopu1p"
+    d:DesignWidth="941"
     mc:Ignorable="d">
     <UserControl.Resources>
         <converter:DateTimeToStringConverter x:Key="DateTimeToString" />
+        <converter:StringToEnumConverter x:Key="StringToEnum" />
         <converter:EnumToBooleanConverter x:Key="EnumToBoolean" />
         <Style x:Key="infoTextbox" TargetType="TextBox">
             <Setter Property="Background" Value="#768B9B" />
@@ -65,151 +67,188 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <StackPanel Margin="40">
-            <TextBlock
-                Margin="0,0,0,32"
-                FontSize="40"
-                Foreground="#C7C7C7"
-                Text="Them nhan vien" />
-            <StackPanel>
-                <Grid Margin="0,0,0,16">
-                    <Border
-                        Width="160"
-                        Height="160"
-                        HorizontalAlignment="Center"
-                        Background="#fff"
-                        CornerRadius="100">
-                        <Ellipse Width="160" Height="160">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="/Images/Profil.png" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </Border>
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="0,0,-80,0"
-                        VerticalAlignment="Bottom"
-                        Source="/Images/Group 21289.png" />
-                </Grid>
-                <Grid Grid.Row="1" Margin="0">
-                    <StackPanel Grid.Row="1">
-                        <Label
-                            Content="Họ và tên"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding DataContext.Employee.Name, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                            <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                            Content="Chuc vu"
-                            FontSize="16"
-                            Margin="0 16 0 0"
-                            Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding DataContext.Employee.Name, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                            <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                            Margin="0,16,0,0"
-                            Content="Email"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding DataContext.Employee.Email, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                            <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                            Margin="0,16,0,0"
-                            Content="Số điện thoại"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding DataContext.Employee.PhoneNumber, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                            <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
-                        </Grid>
-                        <Label
-                            Margin="0,16,0,0"
-                            Content="Ngày sinh"
-                            FontSize="16"
-                            Foreground="#A0ABB4" />
-                        <Grid Height="56">
-                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding DataContext.Employee.Dob, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource DateTimeToString}}" />
-                            <Image
-                                Width="24"
-                                Height="24"
-                                Margin="0,0,13.5,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Source="/Images/edit-3.png" />
-                        </Grid>
-                        <StackPanel Margin="0,24,0,0" Orientation="Horizontal">
-                            <!--<RadioButton
-                                Content="Nam"
-                                GroupName="Gender"
-                                IsChecked="{Binding DataContext.Employee.Gender, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeGender.Male}}" />
-                            <RadioButton
-                                Content="Nữ"
-                                GroupName="Gender"
-                                IsChecked="{Binding DataContext.Employee.Gender, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeGender.Female}}" />-->
-                        </StackPanel>
-                        <StackPanel
-                            Margin="0,56,0,0"
-                            HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-                            <Button Background="Transparent" Style="{StaticResource formButton}">
-                                <TextBlock
-                                    Margin="24,0"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="#fff"
-                                    Text="Hủy" />
-                            </Button>
-                            <Button
-                                Background="#338ACB"
-                                Command="{Binding DataContext.SubmitUpdateFormCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                                CommandParameter="{Binding DataContext.Employee, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                Style="{StaticResource formButton}">
-                                <TextBlock
-                                    Margin="24,0"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="#fff"
-                                    Text="Lưu" />
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-        </StackPanel>
+    <Popup
+        x:Name="DraggablePopup"
+        Width="941"
+        Height="982"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        AllowsTransparency="True"
+        IsOpen="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=UserControl}}"
+        Placement="Center"
+        PlacementTarget="{Binding ElementName=AddEmployeePopu1p}"
+        StaysOpen="True">
+        <Grid>
+            <Thumb
+                x:Name="DragThumb"
+                Cursor="Hand"
+                DragDelta="DragThumb_DragDelta">
+                <Thumb.Style>
+                    <Style TargetType="Thumb">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Border BorderBrush="#527c9b" BorderThickness="2" CornerRadius="24"/>
+                                        <Border
+                                            Width="941"
+                                            Height="982"
+                                            Background="#527C9B"
+                                            CornerRadius="24"
+                                            Opacity="0.5">
+                                            <ContentPresenter />
+                                        </Border>
+                                    </Grid>
 
-    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Thumb.Style>
+            </Thumb>
+            <Button>
+                <Image Source="/Images/close-window.png" Width="20" Height="20"/>
+            </Button>
+            <StackPanel Margin="40">
+                <TextBlock
+                    Margin="0,0,0,32"
+                    FontSize="40"
+                    Foreground="#C7C7C7"
+                    Text="Thêm nhân viên" HorizontalAlignment="Left"/>
+                <StackPanel>
+                    <Grid Margin="0,0,0,16">
+                        <Border
+                            Width="160"
+                            Height="160"
+                            HorizontalAlignment="Center"
+                            Background="#fff"
+                            CornerRadius="100">
+                            <Ellipse Width="160" Height="160">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/Images/Profil.png" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Image
+                            Width="40"
+                            Height="40"
+                            Margin="0,0,-80,0"
+                            VerticalAlignment="Bottom"
+                            Source="/Images/Group 21289.png" />
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0">
+                        <StackPanel Grid.Row="1">
+                            <Label
+                                Content="Họ và tên"
+                                FontSize="16"
+                                Foreground="#A0ABB4" />
+                            <Grid Height="56">
+                                <TextBox Style="{StaticResource infoTextbox}" Text="{Binding Employee.Name}" />
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,13.5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Source="/Images/edit-3.png" />
+                            </Grid>
+                            <Label
+                                Margin="0,16,0,0"
+                                Content="Chuc vu"
+                                FontSize="16"
+                                Foreground="#A0ABB4" />
+                            <Grid Height="56">
+                                <TextBox Style="{StaticResource infoTextbox}" Text="{Binding Employee.Role, Converter={StaticResource StringToEnum}}" />
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,13.5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Source="/Images/edit-3.png" />
+                            </Grid>
+                            <Label
+                                Margin="0,16,0,0"
+                                Content="Email"
+                                FontSize="16"
+                                Foreground="#A0ABB4" />
+                            <Grid Height="56">
+                                <TextBox Style="{StaticResource infoTextbox}" Text="{Binding Employee.Email}" />
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,13.5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Source="/Images/edit-3.png" />
+                            </Grid>
+                            <Label
+                                Margin="0,16,0,0"
+                                Content="Số điện thoại"
+                                FontSize="16"
+                                Foreground="#A0ABB4" />
+                            <Grid Height="56">
+                                <TextBox Style="{StaticResource infoTextbox}" Text="{Binding Employee.PhoneNumber}" />
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,13.5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Source="/Images/edit-3.png" />
+                            </Grid>
+                            <Label
+                                Margin="0,16,0,0"
+                                Content="Ngày sinh"
+                                FontSize="16"
+                                Foreground="#A0ABB4" />
+                            <Grid Height="56">
+                                <TextBox Style="{StaticResource infoTextbox}" Text="{Binding Employee.Dob, Converter={StaticResource DateTimeToString}}" />
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Margin="0,0,13.5,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Source="/Images/edit-3.png" />
+                            </Grid>
+                            <StackPanel Margin="0,24,0,0" Orientation="Horizontal">
+                                <RadioButton Content="Nam" GroupName="Gender" />
+                                <RadioButton Content="Nữ" GroupName="Gender" />
+                            </StackPanel>
+                            <StackPanel
+                                Margin="0,40,0,0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                                <Button Background="Transparent" Style="{StaticResource formButton}">
+                                    <TextBlock
+                                        Margin="24,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="20"
+                                        Foreground="#fff"
+                                        Text="Hủy" />
+                                </Button>
+                                <Button
+                                    Background="#338ACB"
+                                    Command="{Binding DataContext.SubmitAddEmployeeFormCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Employee}"
+                                    Style="{StaticResource formButton}">
+                                    <TextBlock
+                                        Margin="24,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="20"
+                                        Foreground="#fff"
+                                        Text="Lưu" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </Popup>
+
 </UserControl>

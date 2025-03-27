@@ -457,5 +457,11 @@ namespace EmployeeManager.ViewModels
                 SearchEmployee();
             }
         }
+
+        [RelayCommand]
+        public void SubmitAddEmployeeForm(EmployeeModel employee)
+        {
+            RootData.Add(employee);
+        }
     }
 }

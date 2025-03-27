@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager.Views"
     xmlns:converter="clr-namespace:EmployeeManager.Controls.Converter"
+    xmlns:components="clr-namespace:EmployeeManager.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
     x:Name="employeeListView"
@@ -16,7 +17,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:GreaterThanConverter x:Key="GreaterThanConverter"/>
         <converter:LesserThanConverter x:Key="LesserThanConverter"/>
-        
+
         <Style x:Key="lightButton" TargetType="Button">
             <Setter Property="Background" Value="#527c9d" />
             <Setter Property="Height" Value="48" />
@@ -57,7 +58,6 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="5">
-
                             <StackPanel Orientation="Horizontal">
                                 <Image
                                     Width="24"
@@ -517,7 +517,6 @@
             <Setter Property="Opacity" Value="0.6" />
         </Style>
     </UserControl.Resources>
-    
     <Grid>
         <Border
             BorderBrush="#527c9d"
@@ -546,13 +545,13 @@
                     <!--  ComboBoxs  -->
                     <custom:CustomComboBox
                         VerticalAlignment="Center"
-                        CustomItemsSource="{Binding RoleItems}"
+                        CustomItemsSource="{Binding RoleItems, Mode=OneWay}"
                         SelectedItem="{Binding DataContext.SelectedRole, Mode=OneWayToSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                         Tag="Chức vụ" />
                     <custom:CustomComboBox
                         Margin="24,0,0,0"
                         VerticalAlignment="Center"
-                        CustomItemsSource="{Binding EmployeeStatusItems}"
+                        CustomItemsSource="{Binding EmployeeStatusItems, Mode=OneWay}"
                         SelectedItem="{Binding DataContext.SelectedStatus, Mode=OneWayToSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                         Tag="Status" />
                     <!--  Search Box  -->
@@ -599,6 +598,7 @@
                         <Button
                             HorizontalAlignment="Right"
                             Content="Thêm nhân viên"
+                            Command="{Binding OpenAddEmployeePopupCommand}"
                             Style="{StaticResource solidButton}" 
                             />
                     </StackPanel>
@@ -790,6 +790,8 @@
                     </Button>
                 </StackPanel>
             </DockPanel>
+           
         </Grid>
+        <components:AddEmployeePopup IsOpen="{Binding DataContext.IsAddEmployeePopupOpen, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
     </Grid>
 </UserControl>

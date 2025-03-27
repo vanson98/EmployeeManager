@@ -33,6 +33,9 @@ namespace EmployeeManager.ViewModels
         [ObservableProperty]
         private int _currentPage;
 
+        [ObservableProperty]
+        private bool _isAddEmployeePopupOpen;
+
         public int PageSize = 9;
 
         public EmployeeListViewModel()
@@ -40,6 +43,10 @@ namespace EmployeeManager.ViewModels
 
         }
 
-
+        [RelayCommand]
+        public void OpenAddEmployeePopup()
+        {
+            IsAddEmployeePopupOpen = true;
+        }
     }
 }
