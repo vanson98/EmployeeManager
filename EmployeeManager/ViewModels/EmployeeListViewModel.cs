@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EmployeeManager.AppWindows;
+using EmployeeManager.Components;
 using EmployeeManager.Models;
 using EmployeeManager.Models.Enums;
 using System;
@@ -33,20 +35,17 @@ namespace EmployeeManager.ViewModels
         [ObservableProperty]
         private int _currentPage;
 
-        [ObservableProperty]
-        private bool _isAddEmployeePopupOpen;
-
         public int PageSize = 9;
 
         public EmployeeListViewModel()
         {
-
         }
 
         [RelayCommand]
-        public void OpenAddEmployeePopup()
+        public void OpenAddingEmployeeWindow()
         {
-            IsAddEmployeePopupOpen = true;
+            var addingEmployeeWindow = new AddEmployeeWindow();
+            addingEmployeeWindow.Show();
         }
     }
 }

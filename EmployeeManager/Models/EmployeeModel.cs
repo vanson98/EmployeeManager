@@ -13,7 +13,7 @@ namespace EmployeeManager.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public EmployeeGender Gender { get; set; }
+        public EmployeeGender Gender { get; set; } = EmployeeGender.Male;
         public DateTime CreatedDate { get; set; }
         public DateTime Dob { get; set; }
         public EmployeeRole Role { get; set; }

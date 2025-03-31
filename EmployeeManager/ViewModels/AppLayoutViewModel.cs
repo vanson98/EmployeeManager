@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using EmployeeManager.Models;
 using EmployeeManager.Models.Enums;
+using EmployeeManager.ViewModels.MessageTypes;
 using EmployeeManager.Views;
 using System;
 using System.Collections.Generic;
@@ -370,6 +372,10 @@ namespace EmployeeManager.ViewModels
 
         public AppLayoutViewModel()
         {
+            WeakReferenceMessenger.Default.Register<AddNewEmployeeMessage>(this, (r, messsage) =>
+            {
+                SubmitAddEmployeeForm(messsage.Value);
+            });
             SearchedEmployees = RootData;
             _currentViewModel = new EmployeeListViewModel();
             _currentEmployeeDetail = null;
@@ -461,7 +467,21 @@ namespace EmployeeManager.ViewModels
         [RelayCommand]
         public void SubmitAddEmployeeForm(EmployeeModel employee)
         {
-            RootData.Add(employee);
+            if(employee != null)
+            {
+                var lastEmployee = RootData.LastOrDefault();
+                if(lastEmployee == null)
+                {
+                    return;
+                }
+                var lastId = Convert.ToInt32(lastEmployee.Id.Replace("EMP0", ""));
+                var newId = lastId + 1;
+                employee.Id = "EMP0" + newId;
+                RootData.Add(employee);
+                var messenger = WeakReferenceMessenger.Default;
+                messenger.Send(new SubmitAddEmployeeFormMessage("AddEmployeeSuccess"));
+                SearchEmployee();
+            }
         }
     }
 }

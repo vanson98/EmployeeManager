@@ -44,6 +44,13 @@
     <None Remove="Images\upload.png" />
     <None Remove="Images\user.png" />
     <None Remove="Images\window-bg-image.png" />
+    <None Remove="Images\x-circle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\x-circle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -162,6 +169,15 @@
     <Resource Include="Images\window-bg-image.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="AppWindows\AddEmployeeWindow.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Update="AppWindows\MainWindow.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>

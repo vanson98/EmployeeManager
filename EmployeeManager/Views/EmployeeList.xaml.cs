@@ -1,4 +1,5 @@
-﻿using EmployeeManager.Components;
+﻿using EmployeeManager.AppWindows;
+using EmployeeManager.Components;
 using EmployeeManager.Models;
 using EmployeeManager.ViewModels;
 using System;
@@ -74,6 +75,15 @@ namespace EmployeeManager.Views
                     control.ViewModel.EmployeeGridData.Add(new EmployeeViewModel(item));
                 }
             }
+        }
+
+        private void AddNewEmployeeButton_Click(object sender, MouseButtonEventArgs e)
+        {
+            Window mainWindow = Window.GetWindow(this);
+            var addingEmployeeWindow = new AddEmployeeWindow();
+            addingEmployeeWindow.Owner = mainWindow;
+            addingEmployeeWindow.Topmost = false;
+            addingEmployeeWindow.ShowDialog();
         }
     }
 }

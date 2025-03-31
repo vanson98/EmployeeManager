@@ -598,8 +598,8 @@
                         <Button
                             HorizontalAlignment="Right"
                             Content="Thêm nhân viên"
-                            Command="{Binding OpenAddEmployeePopupCommand}"
                             Style="{StaticResource solidButton}" 
+                            PreviewMouseDown="AddNewEmployeeButton_Click"
                             />
                     </StackPanel>
                 </DockPanel>
@@ -790,8 +790,6 @@
                     </Button>
                 </StackPanel>
             </DockPanel>
-           
         </Grid>
-        <components:AddEmployeePopup IsOpen="{Binding DataContext.IsAddEmployeePopupOpen, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
     </Grid>
 </UserControl>

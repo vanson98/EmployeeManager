@@ -1,0 +1,255 @@
+﻿<Window
+    x:Class="EmployeeManager.AppWindows.AddEmployeeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:EmployeeManager.Controls.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:enums="clr-namespace:EmployeeManager.Models.Enums"
+    xmlns:local="clr-namespace:EmployeeManager.AppWindows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AddEmployeeWindow"
+    Width="949"
+    Height="990"
+    AllowsTransparency="True"
+    Background="Transparent"
+    MouseDown="AddingEmployeeWindow_MouseDown"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <converter:DateTimeToStringConverter x:Key="DateTimeToString" />
+        <converter:StringToEnumConverter x:Key="StringToEnum" />
+        <converter:EnumToBooleanConverter x:Key="EnumToBoolean" />
+        <Style x:Key="infoTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#768B9B" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Padding" Value="16,13.5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="24"
+                            SnapsToDevicePixels="True">
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Green" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="red" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="formButton" TargetType="Button">
+            <Setter Property="Width" Value="240" />
+            <Setter Property="Margin" Value="24,0,0,0" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="#43AFFF"
+                            BorderThickness="2"
+                            CornerRadius="30">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CloseWindowButton" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Margin" Value="0,-8,-8,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/x-circle.png" />
+                            </Border.Background>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,8,8,0">
+        <Border
+            BorderBrush="#527c9b"
+            BorderThickness="2"
+            CornerRadius="24" />
+        <Border
+            Width="941"
+            Height="982"
+            Background="#527C9B"
+            CornerRadius="24"
+            Opacity="0.5" />
+
+        <Button Click="CloseWindowButton_Click" Style="{StaticResource CloseWindowButton}" />
+
+        <StackPanel Margin="40">
+            <TextBlock
+                Margin="0,0,0,32"
+                HorizontalAlignment="Left"
+                FontSize="40"
+                Foreground="#C7C7C7"
+                Text="Thêm nhân viên" />
+            <StackPanel>
+                <Grid Margin="0,0,0,16">
+                    <Border
+                        Width="160"
+                        Height="160"
+                        HorizontalAlignment="Center"
+                        Background="#fff"
+                        CornerRadius="100">
+                        <Ellipse Width="160" Height="160">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Images/Profil.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </Border>
+                    <Image
+                        Width="40"
+                        Height="40"
+                        Margin="0,0,-80,0"
+                        VerticalAlignment="Bottom"
+                        Source="/Images/Group 21289.png" />
+                </Grid>
+                <Grid Grid.Row="1" Margin="0">
+                    <StackPanel Grid.Row="1">
+                        <Label
+                            Content="Họ và tên"
+                            FontSize="16"
+                            Foreground="#A0ABB4" />
+                        <Grid Height="56">
+                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding NewEmployee.Name, Mode=OneWayToSource}" />
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,13.5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Images/edit-3.png" />
+                        </Grid>
+                        <Label
+                            Margin="0,16,0,0"
+                            Content="Chuc vu"
+                            FontSize="16"
+                            Foreground="#A0ABB4" />
+                        <Grid Height="56">
+                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding NewEmployee.Role, Converter={StaticResource StringToEnum}}" />
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,13.5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Images/edit-3.png" />
+                        </Grid>
+                        <Label
+                            Margin="0,16,0,0"
+                            Content="Email"
+                            FontSize="16"
+                            Foreground="#A0ABB4" />
+                        <Grid Height="56">
+                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding NewEmployee.Email}" />
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,13.5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Images/edit-3.png" />
+                        </Grid>
+                        <Label
+                            Margin="0,16,0,0"
+                            Content="Số điện thoại"
+                            FontSize="16"
+                            Foreground="#A0ABB4" />
+                        <Grid Height="56">
+                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding NewEmployee.PhoneNumber}" />
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,13.5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Images/edit-3.png" />
+                        </Grid>
+                        <Label
+                            Margin="0,16,0,0"
+                            Content="Ngày sinh"
+                            FontSize="16"
+                            Foreground="#A0ABB4" />
+                        <Grid Height="56">
+                            <TextBox Style="{StaticResource infoTextbox}" Text="{Binding NewEmployee.Dob, Converter={StaticResource DateTimeToString}}" />
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,13.5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Source="/Images/edit-3.png" />
+                        </Grid>
+                        <StackPanel Margin="0,24,0,0" Orientation="Horizontal">
+                            <RadioButton
+                                Content="Nam"
+                                GroupName="Gender"
+                                IsChecked="{Binding NewEmployee.Gender, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeGender.Male}}" />
+                            <RadioButton
+                                Content="Nữ"
+                                GroupName="Gender"
+                                IsChecked="{Binding NewEmployee.Gender, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeGender.Female}}" />
+                        </StackPanel>
+                        <StackPanel
+                            Margin="0,40,0,0"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <Button Background="Transparent" Style="{StaticResource formButton}" Click="CloseWindowButton_Click">
+                                <TextBlock
+                                    Margin="24,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="#fff"
+                                    Text="Hủy" />
+                            </Button>
+                            <Button
+                                Background="#338ACB"
+                                Command="{Binding SubmitFormCommand}"
+                                Style="{StaticResource formButton}">
+                                <TextBlock
+                                    Margin="24,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="#fff"
+                                    Text="Lưu" />
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
