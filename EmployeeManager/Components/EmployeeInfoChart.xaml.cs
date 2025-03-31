@@ -1,5 +1,7 @@
 ﻿using EmployeeManager.Models;
 using EmployeeManager.ViewModels;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +26,7 @@ namespace EmployeeManager.Components
     public partial class EmployeeInfoChart : UserControl
     {
         public EmployeeChartViewModel ViewModel;
+        public ISeries[] Series;
 
         public ObservableCollection<EmployeeModel> RelatedEmployees
         {
@@ -45,8 +48,19 @@ namespace EmployeeManager.Components
 
         // Using a DependencyProperty as the backing store for EmployeeInfo.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EmployeeInfoProperty =
-            DependencyProperty.Register("EmployeeInfo", typeof(EmployeeModel), typeof(EmployeeInfoChart), new PropertyMetadata(null));
+            DependencyProperty.Register("EmployeeInfo", typeof(EmployeeModel), typeof(EmployeeInfoChart), new PropertyMetadata(null, OnEmployeeInfoChange));
 
+        private static void OnEmployeeInfoChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is EmployeeInfoChart control && e.NewValue is EmployeeModel data) {
+                control.Series =
+                [
+                    new PieSeries<int>(){ Values = [data.OnTime] },
+                    new PieSeries<int>(){ Values = new int[]{ data.OnLeave } },
+                    new PieSeries<int>(){ Values = new int[]{ data.Late } }
+                ];
+            }
+        }
 
         public EmployeeInfoChart()
         {

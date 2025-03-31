@@ -1,4 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using EmployeeManager.Models;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeManager.ViewModels
 {
-    public class EmployeeChartViewModel : ObservableObject
+    public partial class EmployeeChartViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private EmployeeModel _employee;
+
+       
     }
 }
