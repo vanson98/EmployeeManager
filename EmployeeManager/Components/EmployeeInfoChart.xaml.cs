@@ -36,6 +36,18 @@ namespace EmployeeManager.Components
             DependencyProperty.Register("RelatedEmployees", typeof(ObservableCollection<EmployeeModel>), typeof(EmployeeInfoChart), new PropertyMetadata(null));
 
 
+
+        public EmployeeModel EmployeeInfo
+        {
+            get { return (EmployeeModel)GetValue(EmployeeInfoProperty); }
+            set { SetValue(EmployeeInfoProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EmployeeInfo.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EmployeeInfoProperty =
+            DependencyProperty.Register("EmployeeInfo", typeof(EmployeeModel), typeof(EmployeeInfoChart), new PropertyMetadata(null));
+
+
         public EmployeeInfoChart()
         {
             InitializeComponent();

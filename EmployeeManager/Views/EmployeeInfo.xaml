@@ -15,7 +15,6 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:TypeToStringConverter x:Key="TypeToString" />
         <converter:DateTimeToStringConverter x:Key="DateTimeToString" />
-
         <Style x:Key="tabButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#fff" />
@@ -377,7 +376,7 @@
                                 <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
-                                <components:EmployeeInfoChart Grid.Row="1" RelatedEmployees="{Binding Employees}"/>
+                                <components:EmployeeInfoChart Grid.Row="1" RelatedEmployees="{Binding Employees}" EmployeeInfo="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
                             </DataTemplate>
                         </ContentControl.Resources>
                     </ContentControl>

@@ -224,7 +224,10 @@
                             Margin="0,40,0,0"
                             HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                            <Button Background="Transparent" Style="{StaticResource formButton}" Click="CloseWindowButton_Click">
+                            <Button
+                                Background="Transparent"
+                                Click="CloseWindowButton_Click"
+                                Style="{StaticResource formButton}">
                                 <TextBlock
                                     Margin="24,0"
                                     HorizontalAlignment="Center"
