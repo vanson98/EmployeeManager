@@ -11,6 +11,7 @@
     Width="949"
     Height="990"
     AllowsTransparency="True"
+    WindowStyle="None"
     Background="Transparent"
     MouseDown="AddingEmployeeWindow_MouseDown"
     ResizeMode="NoResize"

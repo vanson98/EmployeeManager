@@ -338,6 +338,7 @@
                                 Text="Developer" />
                         </StackPanel>
                     </Grid>
+                    <Button Content="next" VerticalAlignment="Center"></Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
