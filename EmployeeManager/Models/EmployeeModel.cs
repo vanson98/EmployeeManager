@@ -22,5 +22,6 @@ namespace EmployeeManager.Models
         public int Late { get; set; }
         public int OnLeave { get; set; }
         public string AvatarPath { get; set; } // New property for profile picture
+        public List<ProjectAttendance> ProjectAttendances { get; set; }
     }
 }

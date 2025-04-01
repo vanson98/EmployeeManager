@@ -41,9 +41,12 @@
                     Height="342"
                     Margin="83,0,83,0"
                     DockPanel.Dock="Top">
-                    <lvc:PieChart Series="{Binding PieChartSeries}" InitialRotation="-90">
-                    </lvc:PieChart>
-                    <TextBlock Text="30 ngày" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+                    <lvc:PieChart InitialRotation="-90" Series="{Binding PieChartSeries}" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Text="30 ngày" />
                 </Grid>
 
                 <Grid
@@ -113,6 +116,32 @@
                 Background="#527c9d"
                 CornerRadius="24"
                 Opacity="0.4" />
+            <Grid Margin="24">
+                <DockPanel Height="35" VerticalAlignment="Top">
+                    <TextBlock
+                        FontSize="24"
+                        FontWeight="SemiBold"
+                        Foreground="#fff"
+                        Text="Dự án"
+                        DockPanel.Dock="Left"/>
+                    <ComboBox
+                        Width="120"
+                        Height="35"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right">
+                        <ComboBoxItem>Nine Proxy</ComboBoxItem>
+                        <ComboBoxItem>Nine Proxy</ComboBoxItem>
+                        <ComboBoxItem>Nine Proxy</ComboBoxItem>
+                    </ComboBox>
+                </DockPanel>
+                <Grid Margin="0 66 0 0">
+                    <lvc:CartesianChart 
+                        Series="{Binding ProjectAttendanceChartSeries}"
+                        XAxes="{Binding XAxes}"
+                        YAxes="{Binding YAxes}"/>
+                </Grid>
+            </Grid>
+
         </Grid>
         <Grid
             Grid.Row="1"

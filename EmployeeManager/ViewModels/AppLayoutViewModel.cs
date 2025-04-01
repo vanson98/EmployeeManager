@@ -376,6 +376,27 @@ namespace EmployeeManager.ViewModels
                     AvatarPath = "/Images/avatars/av1.png"
                 }
             };
+            foreach (var item in RootData)
+            {
+                item.ProjectAttendances = new List<ProjectAttendance>
+                {
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 1, WorkingHourPercent = 25, Project= EmployeeProject.BeeProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 1, WorkingHourPercent = 50, Project = EmployeeProject.NineProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 1, WorkingHourPercent = 20, Project = EmployeeProject.SolarVPN },
+
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 2, WorkingHourPercent = 18, Project= EmployeeProject.BeeProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 2, WorkingHourPercent = 30, Project = EmployeeProject.NineProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 2, WorkingHourPercent = 20, Project = EmployeeProject.SolarVPN },
+
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 3, WorkingHourPercent = 22, Project= EmployeeProject.BeeProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 3, WorkingHourPercent = 45, Project = EmployeeProject.NineProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 3, WorkingHourPercent = 15, Project = EmployeeProject.SolarVPN },
+
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 4, WorkingHourPercent = 30, Project= EmployeeProject.BeeProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 4, WorkingHourPercent = 50, Project = EmployeeProject.NineProxy },
+                    new ProjectAttendance{ Year = 2025, Month = 3, Week = 4, WorkingHourPercent = 15, Project = EmployeeProject.SolarVPN },
+                };
+            }
             SearchedEmployees = RootData;
             _currentViewModel = new EmployeeListViewModel();
             _currentEmployeeDetail = null;
