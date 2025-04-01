@@ -365,7 +365,7 @@
                             Margin="0,10,0,0"
                             FontSize="18"
                             Foreground="#fff"
-                            Text="{Binding EmployeeDetailData.CreatedDate,Converter={StaticResource DateTimeToString}, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            Text="{Binding EmployeeDetailData.CreatedDate, Converter={StaticResource DateTimeToString}, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                     </StackPanel>
                 </DockPanel>
                 <!--  Main Body Component  -->
@@ -376,7 +376,10 @@
                                 <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
-                                <components:EmployeeInfoChart Grid.Row="1" RelatedEmployees="{Binding Employees}" EmployeeInfo="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                <components:EmployeeInfoChart
+                                    Grid.Row="1"
+                                    EmployeeInfo="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    RelatedEmployees="{Binding Employees, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                         </ContentControl.Resources>
                     </ContentControl>

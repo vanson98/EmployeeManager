@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 namespace EmployeeManager.Components
 {
@@ -29,19 +30,23 @@ namespace EmployeeManager.Components
     {
         public EmployeeChartViewModel ViewModel;
 
-       
-
-        public ObservableCollection<EmployeeModel> RelatedEmployees
+        public IEnumerable<EmployeeModel> RelatedEmployees
         {
-            get { return (ObservableCollection<EmployeeModel>)GetValue(RelatedEmployeesProperty); }
+            get { return (IEnumerable<EmployeeModel>)GetValue(RelatedEmployeesProperty); }
             set { SetValue(RelatedEmployeesProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RelatedEmployeesProperty =
-            DependencyProperty.Register("RelatedEmployees", typeof(ObservableCollection<EmployeeModel>), typeof(EmployeeInfoChart), new PropertyMetadata(null));
+            DependencyProperty.Register("RelatedEmployees", typeof(IEnumerable<EmployeeModel>), typeof(EmployeeInfoChart), new PropertyMetadata(null, OnRelatedEmployeesChanged));
 
-
+        private static void OnRelatedEmployeesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is EmployeeInfoChart control && e.NewValue is IEnumerable<EmployeeModel> relatedEmployees) 
+            {
+                control.ViewModel.RelatedEmployees = new ObservableCollection<EmployeeModel>(relatedEmployees);    
+            }
+        }   
 
         public EmployeeModel EmployeeInfo
         {
@@ -65,9 +70,9 @@ namespace EmployeeManager.Components
 
         public EmployeeInfoChart()
         {
-            InitializeComponent();
             ViewModel = new EmployeeChartViewModel();
             DataContext = ViewModel;
+            InitializeComponent();
         }
     }
 }

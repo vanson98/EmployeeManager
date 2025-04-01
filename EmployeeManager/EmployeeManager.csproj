@@ -43,11 +43,15 @@
     <None Remove="Images\Trash.png" />
     <None Remove="Images\upload.png" />
     <None Remove="Images\user.png" />
+    <None Remove="Images\Vector.png" />
     <None Remove="Images\window-bg-image.png" />
     <None Remove="Images\x-circle.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Vector.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\x-circle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
