@@ -17,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace EmployeeManager.Components
 {
@@ -26,7 +28,8 @@ namespace EmployeeManager.Components
     public partial class EmployeeInfoChart : UserControl
     {
         public EmployeeChartViewModel ViewModel;
-        public ISeries[] Series;
+
+       
 
         public ObservableCollection<EmployeeModel> RelatedEmployees
         {
@@ -50,21 +53,20 @@ namespace EmployeeManager.Components
         public static readonly DependencyProperty EmployeeInfoProperty =
             DependencyProperty.Register("EmployeeInfo", typeof(EmployeeModel), typeof(EmployeeInfoChart), new PropertyMetadata(null, OnEmployeeInfoChange));
 
+     
+
         private static void OnEmployeeInfoChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is EmployeeInfoChart control && e.NewValue is EmployeeModel data) {
-                control.Series =
-                [
-                    new PieSeries<int>(){ Values = [data.OnTime] },
-                    new PieSeries<int>(){ Values = new int[]{ data.OnLeave } },
-                    new PieSeries<int>(){ Values = new int[]{ data.Late } }
-                ];
+            if (d is EmployeeInfoChart control && e.NewValue is EmployeeModel data)
+            {
+                control.ViewModel.Employee = data;
             }
         }
 
         public EmployeeInfoChart()
         {
             InitializeComponent();
+            ViewModel = new EmployeeChartViewModel();
             DataContext = ViewModel;
         }
     }
