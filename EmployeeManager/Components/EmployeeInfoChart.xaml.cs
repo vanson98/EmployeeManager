@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace EmployeeManager.Components
 {
@@ -29,6 +30,7 @@ namespace EmployeeManager.Components
     public partial class EmployeeInfoChart : UserControl
     {
         public EmployeeChartViewModel ViewModel;
+        
 
         public IEnumerable<EmployeeModel> RelatedEmployees
         {
@@ -73,6 +75,34 @@ namespace EmployeeManager.Components
             ViewModel = new EmployeeChartViewModel();
             DataContext = ViewModel;
             InitializeComponent();
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetScrollViewer(RelatedEmployeeListView);
+            if (scrollViewer != null)
+            {
+                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + 1);
+            }
+        }
+
+        private ScrollViewer GetScrollViewer(DependencyObject depObj)
+        {
+            if (depObj is ScrollViewer)
+            {
+                return (ScrollViewer)depObj;
+            }
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+                var result = GetScrollViewer(child);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
     }
 }

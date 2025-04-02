@@ -24,6 +24,9 @@ namespace EmployeeManager.ViewModels
         private ObservableCollection<EmployeeModel> _relatedEmployees;
 
         [ObservableProperty]
+        private EmployeeModel _selectedEmployee;
+
+        [ObservableProperty]
         private ISeries[] _pieChartSeries;
 
         [ObservableProperty]
@@ -102,6 +105,10 @@ namespace EmployeeManager.ViewModels
             };
         }
 
+        partial void OnSelectedEmployeeChanged(EmployeeModel value)
+        {
+            Employee = value;
+        }
         public EmployeeChartViewModel()
         {
         }

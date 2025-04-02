@@ -11,23 +11,64 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="NextButtonListView" TargetType="Button">
-            <Setter Property="Width" Value="56"/>
-            <Setter Property="Height" Value="56"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="0 0 20 0"/>
+            <Setter Property="Width" Value="56" />
+            <Setter Property="Height" Value="56" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="0,0,20,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
                         <Grid>
-                            <Border Background="Transparent" CornerRadius="50" BorderBrush="#527C9B"  BorderThickness="2"/>
-                            <Border Background="#102D43" Opacity="0.6" CornerRadius="50" Margin="2">
-                                <Image Source="/Images/Vector.png" Width="20" Height="20"/>
+                            <Border
+                                Background="Transparent"
+                                BorderBrush="#527C9B"
+                                BorderThickness="2"
+                                CornerRadius="50" />
+                            <Border
+                                Margin="2"
+                                Background="#102D43"
+                                CornerRadius="50"
+                                Opacity="0.6">
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Source="/Images/Vector.png" />
                             </Border>
                         </Grid>
-                       
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="ListViewItemContainerStyle1" TargetType="{x:Type ListViewItem}">
+            <Setter Property="Background" Value="#527C9B"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Grid
+                            Width="196"
+                            Height="205"
+                            Margin="0,0,24,0">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="24"
+                                Opacity="0.4" />
+                            <Border
+                                BorderBrush="#527C9B"
+                                BorderThickness="2"
+                                CornerRadius="24" />
+                            <ContentPresenter />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#fff" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -182,9 +223,12 @@
                 </Grid>
                 <Grid Height="215" Margin="0,24,0,0">
                     <ListView
+                        x:Name="RelatedEmployeeListView"
+                        ItemContainerStyle="{DynamicResource ListViewItemContainerStyle1}"
                         ItemsSource="{Binding RelatedEmployees}"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        SelectedItem="{Binding SelectedEmployee}"
                         SelectionMode="Single">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -193,46 +237,38 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid
-                                    Width="196"
-                                    Height="215"
-                                    Margin="0,0,24,0">
+
+                                <StackPanel>
                                     <Border
-                                        Background="#527c9d"
-                                        CornerRadius="24"
-                                        Opacity="0.4" />
-                                    <StackPanel>
-                                        <Border
-                                            Width="100"
-                                            Height="100"
-                                            Margin="0,26,0,0"
-                                            BorderBrush="Yellow"
-                                            BorderThickness="2"
-                                            CornerRadius="50">
-                                            <Border.Background>
-                                                <ImageBrush ImageSource="{Binding AvatarPath}" />
-                                            </Border.Background>
-                                        </Border>
-                                        <TextBlock
-                                            Margin="0,16,0,0"
-                                            HorizontalAlignment="Center"
-                                            FontSize="20"
-                                            Foreground="#fff"
-                                            Text="{Binding Name}" />
-                                        <TextBlock
-                                            Margin="0,4,0,0"
-                                            HorizontalAlignment="Center"
-                                            FontSize="16"
-                                            Foreground="#fff"
-                                            Opacity="0.5"
-                                            Text="{Binding Role}" />
-                                    </StackPanel>
-                                </Grid>
+                                        Width="100"
+                                        Height="100"
+                                        Margin="0,26,0,0"
+                                        BorderBrush="#CFCFCF"
+                                        BorderThickness="2"
+                                        CornerRadius="50">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="{Binding AvatarPath}" />
+                                        </Border.Background>
+                                    </Border>
+                                    <TextBlock
+                                        Margin="0,16,0,0"
+                                        HorizontalAlignment="Center"
+                                        FontSize="20"
+                                        Foreground="#fff"
+                                        Text="{Binding Name}" />
+                                    <TextBlock
+                                        Margin="0,4,0,0"
+                                        HorizontalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="#fff"
+                                        Opacity="0.5"
+                                        Text="{Binding Role}" />
+                                </StackPanel>
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button Style="{StaticResource NextButtonListView}">
-                    </Button>
+                    <Button Click="NextButton_Click" Style="{StaticResource NextButtonListView}" />
                 </Grid>
             </StackPanel>
         </Grid>
