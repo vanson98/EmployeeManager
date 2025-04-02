@@ -70,7 +70,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="Background" Value="#fff" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Foreground" Value="Green" />
@@ -168,6 +168,7 @@
                     Background="Transparent"
                     ItemContainerStyle="{StaticResource EmployeeListBoxItem}"
                     ItemsSource="{Binding FilterEmployees}"
+                    SelectedItem="{Binding CurrentEmployeeDetailInfo}"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                     VirtualizingStackPanel.IsVirtualizing="True">
                     <ListBox.ItemTemplate>
@@ -269,7 +270,7 @@
                                 VerticalAlignment="Center"
                                 FontSize="28"
                                 Foreground="#fff"
-                                Text="{Binding EmployeeDetailData.Name, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                Text="{Binding CurrentEmployeeDetailInfo.Name}" />
                             <Border
                                 Width="51"
                                 Height="20"
@@ -288,7 +289,7 @@
                             HorizontalAlignment="Center"
                             FontSize="20"
                             Foreground="#A0ABB4"
-                            Text="{Binding EmployeeDetailData.Role, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            Text="{Binding CurrentEmployeeDetailInfo.Role}" />
                     </StackPanel>
                     <StackPanel
                         Width="280"
@@ -365,27 +366,25 @@
                             Margin="0,10,0,0"
                             FontSize="18"
                             Foreground="#fff"
-                            Text="{Binding EmployeeDetailData.CreatedDate, Converter={StaticResource DateTimeToString}, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            Text="{Binding CurrentEmployeeDetailInfo.CreatedDate, Converter={StaticResource DateTimeToString}}" />
                     </StackPanel>
                 </DockPanel>
                 <!--  Main Body Component  -->
                 <Grid Grid.Column="1">
                     <ContentControl Content="{Binding CurrentTabViewModel, Mode=OneWay}">
                         <ContentControl.Resources>
+                            <!--  Form Info  -->
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeUpdateFormViewModel}">
-                                <components:EmployeeInfoUpdateForm Grid.Row="1" EmployeeData="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                <components:EmployeeInfoUpdateForm  EmployeeData="{Binding DataContext.CurrentEmployeeDetailInfo, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
+                            <!--  Chart Info  -->
                             <DataTemplate DataType="{x:Type viewmodels:EmployeeChartViewModel}">
                                 <components:EmployeeInfoChart
-                                    Grid.Row="1"
-                                    EmployeeInfo="{Binding EmployeeDetailData, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    RelatedEmployees="{Binding Employees, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    EmployeeInfo="{Binding DataContext.CurrentEmployeeDetailInfo, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    RelatedEmployees="{Binding DataContext.Employees, RelativeSource={RelativeSource AncestorType=UserControl}}" />
                             </DataTemplate>
                         </ContentControl.Resources>
                     </ContentControl>
-                    <!--  Form Info  -->
-                    <!--  Chart Info  -->
-
                 </Grid>
             </Grid>
         </Grid>

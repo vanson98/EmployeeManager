@@ -33,7 +33,15 @@ namespace EmployeeManager.Views
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EmployeeDetailDataProperty =
-            DependencyProperty.Register("EmployeeDetailData", typeof(EmployeeModel), typeof(EmployeeInfo), new PropertyMetadata(null));
+            DependencyProperty.Register("EmployeeDetailData", typeof(EmployeeModel), typeof(EmployeeInfo), new PropertyMetadata(null, OnDetailEmployeeDataChanged));
+
+        private static void OnDetailEmployeeDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is EmployeeInfo control && e.NewValue is EmployeeModel value)
+            {
+                control.ViewModel.CurrentEmployeeDetailInfo = value;
+            }
+        }
 
         public ObservableCollection<EmployeeModel> Employees
         {
@@ -56,9 +64,10 @@ namespace EmployeeManager.Views
         }
         public EmployeeInfo()
         {
-            InitializeComponent();
             ViewModel = new EmployeeInfoViewModel();
             DataContext = ViewModel;
+            InitializeComponent();
+           
         }
 
        

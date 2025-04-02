@@ -15,6 +15,9 @@ namespace EmployeeManager.ViewModels
     public partial class EmployeeInfoViewModel : ObservableObject
     {
         [ObservableProperty]
+        private EmployeeModel _currentEmployeeDetailInfo;
+        
+        [ObservableProperty]
         private ObservableCollection<EmployeeModel> _employees;
         
         [ObservableProperty]
