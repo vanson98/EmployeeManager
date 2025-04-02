@@ -1,4 +1,5 @@
 ﻿using EmployeeManager.Models;
+using EmployeeManager.Models.Enums;
 using EmployeeManager.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ namespace EmployeeManager.Views
             {
                 control.ViewModel.Employees = employees;
                 control.ViewModel.FilterEmployees = employees;
-                control.ViewModel.CurrentTabListBox = "All";
+                control.ViewModel.CurrentTabListBox = EmployeeRoleTab.All;
             }
         }
         public EmployeeInfo()

@@ -6,6 +6,7 @@
     xmlns:converter="clr-namespace:EmployeeManager.Controls.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EmployeeManager.Views"
+    xmlns:enums="clr-namespace:EmployeeManager.Models.Enums"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="clr-namespace:EmployeeManager.ViewModels"
     d:DesignHeight="937"
@@ -15,6 +16,8 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <converter:TypeToStringConverter x:Key="TypeToString" />
         <converter:DateTimeToStringConverter x:Key="DateTimeToString" />
+        <converter:EnumToBooleanConverter x:Key="EnumToBoolean" />
+
         <Style x:Key="tabButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#fff" />
@@ -117,12 +120,12 @@
                     Grid.Column="0"
                     Margin="4,4,1,4"
                     Command="{Binding FilterEmployeeTabListCommand}"
-                    CommandParameter="All"
+                    CommandParameter="{x:Static enums:EmployeeRoleTab.All}"
                     Content="All">
                     <Button.Style>
                         <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="All">
+                                <DataTrigger Binding="{Binding CurrentTabListBox, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeRoleTab.All}}" Value="True">
                                     <Setter Property="Background" Value="#527C9B" />
                                 </DataTrigger>
                             </Style.Triggers>
@@ -133,12 +136,12 @@
                     Grid.Column="1"
                     Margin="1,4,1,4"
                     Command="{Binding FilterEmployeeTabListCommand}"
-                    CommandParameter="Team"
+                    CommandParameter="{x:Static enums:EmployeeRoleTab.Team}"
                     Content="Team">
                     <Button.Style>
                         <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="Team">
+                                <DataTrigger Binding="{Binding CurrentTabListBox, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeRoleTab.Team}}" Value="True">
                                     <Setter Property="Background" Value="#527C9B" />
                                 </DataTrigger>
                             </Style.Triggers>
@@ -149,12 +152,12 @@
                     Grid.Column="2"
                     Margin="1,4,4,4"
                     Command="{Binding FilterEmployeeTabListCommand}"
-                    CommandParameter="Leader"
+                    CommandParameter="{x:Static enums:EmployeeRoleTab.Leader}"
                     Content="Leader">
                     <Button.Style>
                         <Style BasedOn="{StaticResource tabButton}" TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding CurrentTabListBox}" Value="Leader">
+                                <DataTrigger Binding="{Binding CurrentTabListBox, Converter={StaticResource EnumToBoolean}, ConverterParameter={x:Static enums:EmployeeRoleTab.Leader}}" Value="True">
                                     <Setter Property="Background" Value="#527C9B" />
                                 </DataTrigger>
                             </Style.Triggers>

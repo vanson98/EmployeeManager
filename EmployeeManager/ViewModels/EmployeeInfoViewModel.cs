@@ -27,7 +27,7 @@ namespace EmployeeManager.ViewModels
         private object _currentTabViewModel;
 
         [ObservableProperty]
-        private string _currentTabListBox = "All"; 
+        private EmployeeRoleTab _currentTabListBox = EmployeeRoleTab.All; 
 
         public EmployeeInfoViewModel()
         {
@@ -47,22 +47,22 @@ namespace EmployeeManager.ViewModels
         }
         
         [RelayCommand]
-        private void FilterEmployeeTabList(string tab)
+        private void FilterEmployeeTabList(EmployeeRoleTab tab)
         {
-            if(tab == "Team")
+            if(tab == EmployeeRoleTab.Team)
             {
                 FilterEmployees = [..Employees.Where(e=>e.Role == EmployeeRole.Developer || e.Role == EmployeeRole.Tester)];
-                CurrentTabListBox = "Team";
+                CurrentTabListBox = EmployeeRoleTab.Team;
                 return;
             }
-            else if(tab == "Leader")
+            else if(tab == EmployeeRoleTab.Leader)
             {
                 FilterEmployees = [.. Employees.Where(e => e.Role == EmployeeRole.Designer)];
-                CurrentTabListBox = "Leader";
+                CurrentTabListBox = EmployeeRoleTab.Leader;
                 return;
             }
             FilterEmployees = Employees;
-            CurrentTabListBox = "All";
+            CurrentTabListBox = EmployeeRoleTab.All;
         }
     }
 }

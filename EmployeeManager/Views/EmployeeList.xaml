@@ -417,7 +417,7 @@
                         <Border
                             Background="{TemplateBinding Background}"
                             BorderThickness="0"
-                            CornerRadius="10 10 10 10">
+                            CornerRadius="10 10 0 0">
                             <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
@@ -442,6 +442,49 @@
                                     Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
                                     To="Transparent"
                                     Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="GridMenuLastActionButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="106" />
+            <Setter Property="Height" Value="52" />
+            <Setter Property="Foreground" Value="#fff" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="0"
+                    CornerRadius="0 0 10 10">
+                            <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                            To="#768b9d"
+                            Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation
+                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                            To="Transparent"
+                            Duration="0:0:0.1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
@@ -749,7 +792,7 @@
                                                     <Button
                                                         Command="{Binding DataContext.DeleteEmployeeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                                         CommandParameter="{Binding Employee.Id}"
-                                                        Style="{StaticResource GridMenuActionButton}">
+                                                        Style="{StaticResource GridMenuLastActionButton}">
                                                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                                             <Image
                                                                 Width="20"
