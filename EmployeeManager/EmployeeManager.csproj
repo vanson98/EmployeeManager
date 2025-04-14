@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -24,6 +24,7 @@
     <None Remove="Images\ChevronDown.png" />
     <None Remove="Images\close-window.png" />
     <None Remove="Images\edit-3.png" />
+    <None Remove="Images\grid-bg.png" />
     <None Remove="Images\grid.png" />
     <None Remove="Images\Group 21289.png" />
     <None Remove="Images\hide-window.png" />
@@ -49,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\grid-bg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Vector.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -93,6 +97,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
   </ItemGroup>
 
   <ItemGroup>

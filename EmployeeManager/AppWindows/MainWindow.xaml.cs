@@ -1,4 +1,6 @@
 ﻿using EmployeeManager.ViewModels;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Windows.Graphics;
 
 namespace EmployeeManager.AppWindows;
 
