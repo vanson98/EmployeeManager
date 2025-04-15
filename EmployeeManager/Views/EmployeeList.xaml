@@ -458,9 +458,9 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border
-                    Background="{TemplateBinding Background}"
-                    BorderThickness="0"
-                    CornerRadius="0 0 10 10">
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="0"
+                            CornerRadius="0 0 10 10">
                             <ContentPresenter Margin="10,0" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
@@ -472,9 +472,9 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation
-                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                            To="#768b9d"
-                            Duration="0:0:0.1" />
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="#768b9d"
+                                    Duration="0:0:0.1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
@@ -482,9 +482,9 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation
-                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                            To="Transparent"
-                            Duration="0:0:0.1" />
+                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                    To="Transparent"
+                                    Duration="0:0:0.1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
@@ -578,11 +578,11 @@
             BorderThickness="1"
             CornerRadius="24">
             <Border.Background>
-                <SolidColorBrush Opacity="0.3" Color="#527c9b" />
+                <SolidColorBrush Opacity="0.7" Color="#527c9b" />
             </Border.Background>
-            <!--<Border.Effect>
-                         <BlurEffect KernelType="Box" Radius="3" />
-                     </Border.Effect>-->
+            <Border.Effect>
+                <BlurEffect KernelType="Box" Radius="3" />
+            </Border.Effect>
         </Border>
         <Grid Margin="24">
             <Grid.RowDefinitions>
